@@ -58,14 +58,17 @@ tabs.forEach(tab => {
   });
 });
 
-// ── Cursor pirohy (custom SVG — nie Apple emoji) ──
+// ── Cursor pirohy — autentický tvar pierogi/varenyky (polmesiac, zubatý šev) ──
 (function () {
-  const PIROG_SVG = `<svg viewBox="0 0 80 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 34 C8 20 24 10 40 10 C56 10 72 20 72 34 C72 44 58 50 40 50 C22 50 8 44 8 34 Z"
-          fill="rgba(212,168,67,.25)" stroke="#d4a843" stroke-width="2.5" stroke-linejoin="round"/>
-    <path d="M14 28 C18 20 24 17 30 20" stroke="#d4a843" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-    <path d="M30 20 C34 14 40 14 46 18" stroke="#d4a843" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-    <path d="M46 18 C52 14 58 17 64 24" stroke="#d4a843" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  const PIROG_SVG = `<svg viewBox="0 0 58 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Telo: klasický polmesiacový tvar складеного cesta -->
+    <path d="M5 32 C3 32 2 30 3 27 C6 14 16 4 29 4 C42 4 52 14 55 27 C56 30 55 32 53 32 Z"
+          fill="rgba(212,168,67,.38)" stroke="rgba(212,168,67,.92)" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Šev (crimp) — typický znak piroha/pierogu, séria záhybov po okraji -->
+    <path d="M7 28 C9 21 8 19 11 18 C14 17 15 21 18 20 C21 19 21 16 24 14 C27 12 28 16 31 15 C34 14 34 18 37 17 C40 16 40 20 43 19 C46 18 46 22 49 21 C51 20 52 24 53 27"
+          fill="none" stroke="rgba(212,168,67,.55)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Lesk (dough sheen) -->
+    <path d="M14 17 Q21 9 29 8 Q37 7 44 11" fill="none" stroke="rgba(255,252,235,.28)" stroke-width="2.2" stroke-linecap="round"/>
   </svg>`;
   var last = 0;
   var count = 0;

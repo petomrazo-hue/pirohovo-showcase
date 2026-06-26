@@ -68,7 +68,14 @@ body::after {
 
 .bg-overlay {
   position: fixed; inset: 0; z-index: -1;
-  background: linear-gradient(180deg, rgba(14,12,6,.68) 0%, rgba(12,10,4,.55) 50%, rgba(20,19,12,.82) 100%);
+  /* Cinematický overlay — svetlý v strede (jedlo viditeľné), tmavý naspodku (text čitateľný) */
+  background:
+    radial-gradient(ellipse 80% 65% at 50% 45%, rgba(10,8,2,.20) 0%, transparent 70%),
+    linear-gradient(180deg,
+      rgba(10,8,2,.18) 0%,
+      rgba(10,8,2,.12) 35%,
+      rgba(10,8,2,.38) 62%,
+      rgba(14,12,6,.82) 100%);
   pointer-events: none;
 }
 
@@ -153,17 +160,18 @@ body::after {
 .btn--outline { background: transparent; color: var(--text); border-color: rgba(212,168,67,.3); }
 .btn--outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
 
-/* ═══════════════ NAV ═══════════════ */
+/* ═══════════════ NAV — vždy tmavý ═══════════════ */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 20px 0;
-  transition: background .4s, padding .4s, border-color .4s;
+  padding: 16px 0;
+  background: rgba(14,13,7,.97);
+  backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid rgba(212,168,67,.13);
+  transition: padding .3s, border-color .3s;
 }
 .nav.scrolled {
-  background: rgba(20,19,12,.95);
-  backdrop-filter: blur(24px) saturate(1.4);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+  border-bottom-color: var(--border);
 }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; }
 
