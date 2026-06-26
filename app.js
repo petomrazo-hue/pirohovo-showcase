@@ -36,6 +36,40 @@ tabs.forEach(tab => {
   });
 });
 
+// ── Cursor pirohy (ako mrazosoft snowflakes) ──
+(function () {
+  const PIROHY = ['🥟', '🥟', '🥟', '🫕'];
+  var last = 0;
+  function emitPirog(x, y) {
+    const el = document.createElement('span');
+    el.className = 'cursor-pirog';
+    el.textContent = PIROHY[Math.floor(Math.random() * PIROHY.length)];
+    const dx = (Math.random() - 0.5) * 60;
+    const dy = -(30 + Math.random() * 50);
+    const rot = (Math.random() < 0.5 ? -1 : 1) * (15 + Math.random() * 40) + 'deg';
+    el.style.left = x + 'px';
+    el.style.top  = y + 'px';
+    el.style.setProperty('--dx', dx + 'px');
+    el.style.setProperty('--dy', dy + 'px');
+    el.style.setProperty('--rot', rot);
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+  window.addEventListener('mousemove', function (e) {
+    const now = Date.now();
+    if (now - last < 80) return;
+    last = now;
+    emitPirog(e.clientX, e.clientY);
+  }, { passive: true });
+  window.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'touch') {
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => emitPirog(e.clientX + (Math.random()*30-15), e.clientY + (Math.random()*30-15)), i * 60);
+      }
+    }
+  }, { passive: true });
+})();
+
 // ── Flour particles ──
 (function () {
   const container = document.getElementById('particles');
