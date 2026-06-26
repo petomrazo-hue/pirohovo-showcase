@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pirohy Bratislava | Pirohovo – Drive-through &amp; Rozvoz</title>
-  <meta name="description" content="Pirohovo – ručne robené domáce pirohy v Bratislave. Drive-through &amp; rozvoz. Prešovská 38B, Ut–Ne 11:00–20:00.">
+  <meta name="description" content="Ručne robené pirohy v Bratislave – drive-through &amp; rozvoz. Domáce cesto, vlastné plnky. Prešovská 349/38B, Ut–Ne 11:00–20:00. Objednaj online!">
+  <meta name="keywords" content="pirohy Bratislava, pirohovo, drive-through Bratislava, rozvoz jedla Bratislava, bryndzové pirohy, domáce pirohy">
   <meta name="theme-color" content="#14130c">
   <link rel="canonical" href="https://pirohovo.eu/">
 
@@ -14,24 +15,28 @@
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
   <!-- OG / Social -->
-  <meta property="og:title" content="Pirohovo – Ručne robené pirohy | Bratislava">
-  <meta property="og:description" content="Ručne tvarované pirohy z vlastnej dielne. Čerstvé každý deň, bez kompromisov.">
-  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pirohovo – Ručne robené pirohy Bratislava">
+  <meta property="og:description" content="Domáce cesto, vlastné plnky. Drive-through &amp; rozvoz. Prešovská 349/38B, Bratislava.">
+  <meta property="og:type" content="restaurant">
   <meta property="og:url" content="https://pirohovo.eu/">
   <meta property="og:locale" content="sk_SK">
   <meta property="og:image" content="https://pirohovo.eu/images/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Pirohovo – Varíme s láskou | Bratislava">
-  <meta name="twitter:description" content="Ručne tvarované pirohy z vlastnej dielne. Čerstvé každý deň.">
+  <meta name="twitter:title" content="Pirohovo – Pirohy Bratislava">
+  <meta name="twitter:description" content="Ručne robené pirohy, drive-through &amp; rozvoz. Bratislava.">
   <meta name="twitter:image" content="https://pirohovo.eu/images/og-image.jpg">
 
-  <!-- Fonts -->
+  <!-- Fonts & resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.instagram.com">
+  <link rel="preconnect" href="https://maps.googleapis.com">
+  <link rel="dns-prefetch" href="https://wa.me">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/bg1.jpg">
 
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
 
   <!-- Google Consent Mode v2 — default deny (GDPR SK §109 + ePrivacy) -->
   <script>
@@ -71,7 +76,7 @@
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Pirohovo",
-    "description": "Poctivé domáce pirohy z vlastnej výroby. Slané, sladké, šúcance. Ručná výroba každý deň.",
+    "description": "Ručne robené pirohy v Bratislave. Drive-through a rozvoz.",
     "url": "https://pirohovo.eu",
     "telephone": "+421915671603",
     "email": "info@pirohovo.eu",
@@ -82,6 +87,11 @@
       "postalCode": "821 02",
       "addressCountry": "SK"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.1594652,
+      "longitude": 17.1401873
+    },
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -91,7 +101,7 @@
       }
     ],
     "servesCuisine": ["Slovak","Dumplings"],
-    "priceRange": "€",
+    "priceRange": "€€",
     "hasMenu": "https://pirohovo.eu/#menu",
     "sameAs": [
       "https://www.facebook.com/pirohovo",
@@ -99,13 +109,29 @@
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "59"
+      "ratingValue": "5.0",
+      "reviewCount": "59",
+      "bestRating": "5"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Menu",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "MenuItem", "name": "Bryndzové pirohy", "description": "So slaninou, kyslou smotanou a jarnou cibuľkou / pažítkou", "offers": {"@type": "Offer", "price": "10.20", "priceCurrency": "EUR"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "MenuItem", "name": "Krevetové v sépiovom ceste", "offers": {"@type": "Offer", "price": "10.20", "priceCurrency": "EUR"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "MenuItem", "name": "Údeniaky", "offers": {"@type": "Offer", "price": "8.30", "priceCurrency": "EUR"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "MenuItem", "name": "S údeným mäsom", "offers": {"@type": "Offer", "price": "8.10", "priceCurrency": "EUR"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "MenuItem", "name": "Špenátové s Ricottou", "offers": {"@type": "Offer", "price": "8.10", "priceCurrency": "EUR"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "MenuItem", "name": "Tatárčané slané", "offers": {"@type": "Offer", "price": "8.20", "priceCurrency": "EUR"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "MenuItem", "name": "Marhuľové pirohy (sezónne)", "offers": {"@type": "Offer", "price": "9.00", "priceCurrency": "EUR"}}}
+      ]
     }
   }
   </script>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Preskočiť na hlavný obsah</a>
 
 <!-- ═══════════════ CINEMATIC BACKGROUND ═══════════════ -->
 <div class="bg-cinema" aria-hidden="true">
@@ -117,9 +143,9 @@
 <!-- ═══════════════ NAV ═══════════════ -->
 <nav class="nav" id="nav">
   <div class="nav__inner container">
-    <a href="#" class="nav__logo" aria-label="Pirohovo">
+    <a href="/" class="nav__logo" aria-label="Pirohovo – domovská stránka">
       <img src="images/logo.jpg" alt="Pirohovo logo" class="nav__logo-img" loading="eager" width="44" height="44">
-      <span class="nav__logo-text" aria-hidden="true">PIROHO<span class="red">&#9829;</span>O</span>
+      <span class="nav__logo-text" aria-hidden="true">PIROHO<span class="logo-heart">&#9829;</span>VO</span>
     </a>
     <ul class="nav__links" id="navLinks">
       <li><a href="#menu">Menu</a></li>
@@ -129,13 +155,14 @@
       <li><a href="order.html" class="nav__order">Objednať</a></li>
       <li><a href="tel:0915671603" class="nav__cta">0915 671 603</a></li>
     </ul>
-    <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false">
+    <button class="nav__burger" id="burger" aria-label="Otvoriť navigačné menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <!-- ═══════════════ HERO ═══════════════ -->
+<main id="main-content">
 <section class="hero" id="home">
   <div class="hero__glow"></div>
   <!-- Dekoratívne SVG pirohy plávajúce v hero sekcii -->
@@ -162,7 +189,7 @@
       <a href="#menu" class="btn btn--outline">Pozrieť menu</a>
     </div>
     <div class="hero__meta-row">
-      <span class="hero__meta-item"><span class="hero__star">★★★★★</span>&nbsp;<strong>5,0</strong> · 59 recenzií Google</span>
+      <a href="https://maps.app.goo.gl/NEu2ToTrzShk7BaFA" target="_blank" rel="noopener" class="hero__meta-item hero__meta-reviews" aria-label="Zobraziť 59 recenzií na Google Maps"><span class="hero__star" aria-hidden="true">★★★★★</span>&nbsp;<strong>5,0</strong> · 59 recenzií Google</a>
       <span class="hero__meta-sep">·</span>
       <span class="hero__meta-item">Ut–Ne · 11:00–20:00</span>
       <span class="hero__meta-sep">·</span>
@@ -174,12 +201,12 @@
 
 <!-- ═══════════════ TRUST STRIP ═══════════════ -->
 <div class="trust">
-  <div class="container trust__row">
-    <div class="trust__item"><span class="trust__dot2">—</span><span>Domáca výroba každý deň</span></div>
-    <div class="trust__item"><span class="trust__dot2">—</span><span>Ut–Ne · 11:00–20:00</span></div>
-    <div class="trust__item"><span class="trust__dot2">—</span><span>od <strong>8,10 €</strong></span></div>
-    <div class="trust__item"><span class="trust__dot2">—</span><span>Objednaj cez WhatsApp</span></div>
-  </div>
+  <ul role="list" class="container trust__row">
+    <li class="trust__item"><span class="trust__dot2" aria-hidden="true">—</span>Domáca výroba každý deň</li>
+    <li class="trust__item"><span class="trust__dot2" aria-hidden="true">—</span>Ut–Ne · 11:00–20:00</li>
+    <li class="trust__item"><span class="trust__dot2" aria-hidden="true">—</span>od <strong>8,10 €</strong></li>
+    <li class="trust__item"><span class="trust__dot2" aria-hidden="true">—</span>Objednaj cez WhatsApp</li>
+  </ul>
 </div>
 
 <!-- ═══════════════ SEASONAL ═══════════════ -->
@@ -200,13 +227,24 @@
       <p>Každý pirog ručne tvarovaný, plnený domácou plnkou</p>
     </div>
 
-    <div class="menu-tabs">
-      <button class="tab active" data-filter="all">Všetky</button>
-      <button class="tab" data-filter="slane">Slané</button>
-      <button class="tab" data-filter="sladke">Sladké</button>
-      <button class="tab" data-filter="sucance">Šúľance</button>
-      <button class="tab" data-filter="napoje">Nápoje</button>
+    <div class="menu-tabs" role="tablist" aria-label="Filtrovať menu podľa kategórie">
+      <button class="tab active" data-filter="all" role="tab" aria-selected="true">Všetky</button>
+      <button class="tab" data-filter="slane" role="tab" aria-selected="false">Slané</button>
+      <button class="tab" data-filter="sladke" role="tab" aria-selected="false">Sladké</button>
+      <button class="tab" data-filter="sucance" role="tab" aria-selected="false">Šúľance</button>
+      <button class="tab" data-filter="napoje" role="tab" aria-selected="false">Nápoje</button>
     </div>
+
+    <details class="alergeny-legenda">
+      <summary>ℹ️ Legenda alergénov</summary>
+      <ul>
+        <li><strong>1</strong> – Obilniny obsahujúce lepok (pšenica, raž, jačmeň, ovos...)</li>
+        <li><strong>3</strong> – Vajcia a výrobky z vajec</li>
+        <li><strong>7</strong> – Mlieko a výrobky z mlieka (vrátane laktózy)</li>
+        <li><strong>8</strong> – Orechy (mandle, lieskové orechy, vlašské orechy, kešu...)</li>
+      </ul>
+      <p>Úplný zoznam alergénov dostupný na požiadanie · 0915 671 603 · info@pirohovo.eu</p>
+    </details>
 
     <div class="menu-list" id="menuList">
 
@@ -378,7 +416,9 @@
     </div>
     <div class="photo-grid photo-grid--2">
       <a class="photo-card photo-card--large reveal" href="https://www.instagram.com/p/DZ1z8fBIHmD/" target="_blank" rel="noopener">
-        <div class="photo-card__bg" style="background-image:url('images/bg1.jpg'); background-position: center 75%;"></div>
+        <figure class="photo-card__figure">
+          <img src="images/bg1.jpg" alt="Marhuľové pirohy – sezónna špeciálka z čerstvých marhúľ" loading="lazy" width="800" height="600" class="photo-card__img" style="object-position: center 75%">
+        </figure>
         <div class="photo-card__body">
           <h3>Marhuľové pirohy</h3>
           <p>Sezónna špeciálka z čerstvých marhúľ — jemné cesto, voňavá plnka</p>
@@ -386,7 +426,9 @@
         <span class="photo-card__link">Otvoriť na Instagrame →</span>
       </a>
       <a class="photo-card photo-card--large reveal" href="https://www.instagram.com/p/DZPPgrzoiLg/" target="_blank" rel="noopener">
-        <div class="photo-card__bg" style="background-image:url('images/bg2.jpg'); background-position: center 60%;"></div>
+        <figure class="photo-card__figure">
+          <img src="images/bg2.jpg" alt="Jahodová novinka – sezónna sladká špeciálka z čerstvých jahôd" loading="lazy" width="800" height="600" class="photo-card__img" style="object-position: center 60%">
+        </figure>
         <div class="photo-card__body">
           <h3>Jahodová novinka</h3>
           <p>Sezónna sladká klasika — kým sú jahody, varíme s jahodami</p>
@@ -548,11 +590,13 @@
   </div>
 </section>
 
+</main>
+
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
-      <span class="footer__logo" aria-label="Pirohovo" role="img">PIROHO<span class="red" aria-hidden="true">&#9829;</span><span aria-hidden="true">O</span></span>
+      <span class="footer__logo" aria-label="Pirohovo" role="img">PIROHO<span class="logo-heart" aria-hidden="true">&#9829;</span>VO</span>
       <span class="footer__tag">Varíme s láskou</span>
     </div>
     <div class="footer__socials">
@@ -571,8 +615,11 @@
       <a href="https://www.soi.sk" target="_blank" rel="noopener">SOI</a>
     </div>
     <div class="footer__company">
-      <p>Pirohovo s. r. o. &nbsp;·&nbsp; IČO: 57 646 333 &nbsp;·&nbsp; Rybničná 10191/61B, 831 06 Bratislava</p>
-      <p>Prevádzka: Prešovská 349/38B, 821 02 Bratislava &nbsp;·&nbsp; pirohovo.eu</p>
+      <address>
+        <strong>Prevádzka:</strong><br>
+        Prešovská 349/38B, 821 02 Bratislava
+      </address>
+      <p><small>Pirohovo s. r. o. &nbsp;·&nbsp; IČO: 57 646 333 &nbsp;·&nbsp; <!-- TODO: DIČ po registrácii na DÚ --> Rybničná 10191/61B, 831 06 Bratislava</small></p>
     </div>
     <p class="footer__copy">© <span id="year"></span> Pirohovo s. r. o.</p>
   </div>
@@ -580,7 +627,7 @@
 
 <!-- ═══════════════ FLOATING PRVKY ═══════════════ -->
 <!-- WhatsApp -->
-<a href="https://wa.me/421915671603" class="float-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a href="https://wa.me/421915671603" class="float-wa" target="_blank" rel="noopener" aria-label="Kontaktuj nás cez WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 

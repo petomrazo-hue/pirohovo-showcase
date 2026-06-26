@@ -39,8 +39,9 @@ const mItems = document.querySelectorAll('.mitem');
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
+    tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
     tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
     const f = tab.dataset.filter;
     if (f === 'all') {
       menuCats.forEach(c => c.classList.remove('hidden'));

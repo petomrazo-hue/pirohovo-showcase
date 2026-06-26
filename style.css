@@ -24,6 +24,19 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
+/* Skip navigation */
+.skip-link {
+  position: absolute; top: -48px; left: 16px;
+  background: var(--gold); color: var(--bg);
+  padding: 8px 16px; border-radius: 4px;
+  font-weight: 600; z-index: 10000;
+  text-decoration: none; transition: top .2s;
+}
+.skip-link:focus { top: 8px; }
+
+/* Logo heart span */
+.logo-heart { color: var(--red); }
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -413,10 +426,15 @@ body::after {
 
 /* ═══════════════ MENU ═══════════════ */
 .menu-tabs {
-  display: flex; gap: 8px; justify-content: center;
-  flex-wrap: wrap; margin-bottom: 44px;
+  display: flex; gap: 8px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 4px; margin-bottom: 44px;
 }
+.menu-tabs::-webkit-scrollbar { height: 3px; }
+.menu-tabs::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 .tab {
+  scroll-snap-align: start; flex-shrink: 0;
   padding: 10px 24px; border-radius: 100px;
   border: 1px solid var(--border); background: transparent;
   color: var(--muted); font-family: var(--sans); font-size: .86rem;
@@ -506,6 +524,20 @@ body::after {
   50%      { box-shadow: 0 0 0 4px rgba(192,57,43,.0); }
 }
 
+/* Alergény legenda */
+.alergeny-legenda {
+  margin-bottom: 32px; padding: 12px 20px;
+  background: rgba(212,168,67,.04); border: 1px solid rgba(212,168,67,.14);
+  border-radius: var(--r); font-size: .84rem; color: var(--muted);
+}
+.alergeny-legenda summary {
+  cursor: pointer; font-weight: 600; color: var(--gold-d);
+  list-style: none; user-select: none;
+}
+.alergeny-legenda summary::-webkit-details-marker { display: none; }
+.alergeny-legenda ul { margin-top: 10px; padding-left: 16px; display: flex; flex-direction: column; gap: 4px; }
+.alergeny-legenda p { margin-top: 8px; font-size: .79rem; font-style: italic; }
+
 .menu-note {
   text-align: center; font-size: .82rem; color: var(--muted);
   letter-spacing: .03em; padding-top: 8px;
@@ -541,13 +573,17 @@ body::after {
   border-color: rgba(212,168,67,.3);
 }
 
-.photo-card__bg {
-  position: absolute; inset: 0; z-index: 0;
-  background-size: cover; background-position: center;
+.photo-card__figure {
+  position: absolute; inset: 0; z-index: 0; margin: 0;
+}
+.photo-card__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; border-radius: var(--r);
   transition: transform .6s ease;
 }
-.photo-card:hover .photo-card__bg { transform: scale(1.07); }
-.photo-card__bg::after {
+.photo-card:hover .photo-card__img { transform: scale(1.07); }
+.photo-card__figure::after {
   content: '';
   position: absolute; inset: 0;
   background: linear-gradient(160deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.75) 100%);
@@ -570,6 +606,13 @@ body::after {
 .photo-card:hover .photo-card__link { color: var(--gold-l); letter-spacing: .1em; }
 
 .gallery-cta { text-align: center; }
+
+/* Reviews badge as link in hero */
+.hero__meta-reviews {
+  text-decoration: none; color: inherit;
+  transition: opacity .2s;
+}
+.hero__meta-reviews:hover { opacity: .8; }
 
 /* ═══════════════ VIDEOS ═══════════════ */
 .video-section { background: var(--bg); }
@@ -770,6 +813,7 @@ body::after {
   .btn { width: 100%; max-width: 300px; justify-content: center; }
   .hero__badge { flex-wrap: wrap; justify-content: center; font-size: .76rem; gap: 8px; }
   .mitem__name { white-space: normal; }
+  .menu-items .mitem:last-child { padding-right: 72px; }
 }
 
 /* ═══════════════ HERO ADDITIONS ═══════════════ */
