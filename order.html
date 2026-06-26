@@ -6,7 +6,7 @@
   <title>Objednávka – Pirohovo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
   <style>
     .order-page { min-height: 100vh; padding: 100px 0 60px; }
     .order-grid { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
@@ -15,8 +15,10 @@
 
     /* MENU ITEMS */
     .order-category { margin-bottom: 32px; }
-    .order-cat-label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--gold); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 16px; }
+    .order-cat-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 14px;
+    }
     .order-item {
       display: flex; align-items: center; gap: 14px;
       padding: 14px 16px; border-radius: 10px;
@@ -29,7 +31,7 @@
     .order-item.selected { border-color: var(--gold); background: rgba(212,168,67,.08); }
     .order-item__name { flex: 1; font-weight: 500; font-size: .95rem; }
     .order-item__desc { font-size: .78rem; color: var(--muted); margin-top: 2px; }
-    .order-item__price { font-weight: 700; color: var(--gold-l); white-space: nowrap; }
+    .order-item__price { font-weight: 700; color: var(--gold-l); white-space: nowrap; font-family: var(--serif); }
     .order-item__qty {
       display: flex; align-items: center; gap: 10px;
       opacity: 0; pointer-events: none; transition: opacity .2s;
@@ -51,7 +53,7 @@
       border-radius: 16px; padding: 28px;
     }
     .cart-title { font-family: var(--serif); font-size: 1.3rem; color: var(--gold-l); margin-bottom: 20px; }
-    .cart-empty { color: var(--muted); font-size: .88rem; text-align: center; padding: 20px 0; }
+    .cart-empty { color: var(--muted); font-size: .88rem; text-align: center; padding: 20px 0; line-height: 1.7; }
     .cart-items { margin-bottom: 20px; }
     .cart-row { display: flex; justify-content: space-between; align-items: center;
       padding: 8px 0; border-bottom: 1px solid rgba(212,168,67,.08); font-size: .88rem; }
@@ -70,33 +72,36 @@
       font-family: var(--sans); font-size: .9rem; width: 100%;
       transition: border-color .2s;
     }
-    .order-form input:focus, .order-form select:focus, .order-form textarea:focus {
+    .order-form input:focus, .order-form textarea:focus {
       outline: none; border-color: var(--gold);
     }
     .order-form input::placeholder, .order-form textarea::placeholder { color: var(--muted); }
-    .order-form select option { background: var(--bg); }
     .order-type-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .order-type-btn {
-      padding: 10px; border-radius: 8px; border: 1px solid var(--border);
-      background: none; color: var(--muted); cursor: pointer; font-size: .88rem;
-      transition: all .2s; text-align: center;
+      padding: 11px; border-radius: 8px; border: 1px solid var(--border);
+      background: none; color: var(--muted); cursor: pointer; font-size: .86rem;
+      transition: all .2s; text-align: center; letter-spacing: .04em;
     }
-    .order-type-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(212,168,67,.08); }
+    .order-type-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(212,168,67,.08); font-weight: 600; }
     .btn-order {
-      background: var(--gold); color: #000; border: none; border-radius: 10px;
+      background: var(--gold); color: #0e0c04; border: none; border-radius: 10px;
       padding: 15px; font-weight: 700; font-size: 1rem; cursor: pointer;
-      width: 100%; transition: background .2s, transform .1s;
+      width: 100%; transition: background .2s, transform .15s;
+      letter-spacing: .04em;
     }
-    .btn-order:hover { background: var(--gold-l); transform: translateY(-1px); }
-    .btn-order:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .btn-order:hover { background: var(--gold-l); transform: translateY(-2px); }
+    .btn-order:disabled { opacity: .45; cursor: not-allowed; transform: none; }
 
     /* SUCCESS */
-    .order-success {
-      display: none; text-align: center; padding: 30px 20px;
+    .order-success { display: none; text-align: center; padding: 30px 20px; }
+    .success-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(212,168,67,.1); border: 1px solid rgba(212,168,67,.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; font-size: 1.8rem; color: var(--gold);
     }
-    .order-success .success-icon { font-size: 3rem; margin-bottom: 12px; }
-    .order-success h3 { font-family: var(--serif); color: var(--gold-l); margin-bottom: 8px; }
-    .order-success p { color: var(--muted); font-size: .9rem; }
+    .order-success h3 { font-family: var(--serif); color: var(--gold-l); margin-bottom: 10px; font-size: 1.4rem; }
+    .order-success p { color: var(--muted); font-size: .9rem; line-height: 1.7; }
 
     @media (max-width: 860px) {
       .order-grid { grid-template-columns: 1fr; }
@@ -109,13 +114,12 @@
 <div class="bg-cinema" aria-hidden="true">
   <div class="bg-slide s1"></div>
   <div class="bg-slide s2"></div>
-  <div class="bg-slide s3"></div>
 </div>
 <div class="bg-overlay" aria-hidden="true"></div>
 
 <nav class="nav scrolled" id="nav">
   <div class="nav__inner container">
-    <a href="index.html" class="nav__logo">PIROHO<span class="red">♥</span>O</a>
+    <a href="index.html" class="nav__logo">PIROHO<span class="red">&#9829;</span>O</a>
     <ul class="nav__links" id="navLinks">
       <li><a href="index.html#menu">Menu</a></li>
       <li><a href="index.html#galeria">Galéria</a></li>
@@ -137,36 +141,27 @@
     <div class="order-grid">
       <!-- MENU -->
       <div class="menu-side">
+
         <div class="order-category">
-          <div class="order-cat-label">🧅 Slané pirohy</div>
-          <div class="order-item" data-id="bryndzove" data-name="Bryndzové" data-price="8.10">
+          <div class="order-cat-label">Slané pirohy</div>
+
+          <div class="order-item" data-id="bryndzove" data-name="Bryndzové" data-price="10.20">
             <div style="flex:1">
               <div class="order-item__name">Bryndzové</div>
               <div class="order-item__desc">So slaninou, kyslou smotanou a jemnou cibuľkou / pažítkou</div>
             </div>
-            <span class="order-item__price">8,10 €</span>
+            <span class="order-item__price">10,20 €</span>
             <div class="order-item__qty">
               <button class="qty-btn" data-action="minus">−</button>
               <span class="qty-num">1</span>
               <button class="qty-btn" data-action="plus">+</button>
             </div>
           </div>
-          <div class="order-item" data-id="perky" data-name="Perky" data-price="8.10">
+
+          <div class="order-item" data-id="udeniaky" data-name="Údeniaky" data-price="8.30">
             <div style="flex:1">
-              <div class="order-item__name">Perky</div>
-              <div class="order-item__desc">Podľa výberu: mak, orech, pražená strúhanka — preliate rozpusteným maslom</div>
-            </div>
-            <span class="order-item__price">8,10 €</span>
-            <div class="order-item__qty">
-              <button class="qty-btn" data-action="minus">−</button>
-              <span class="qty-num">1</span>
-              <button class="qty-btn" data-action="plus">+</button>
-            </div>
-          </div>
-          <div class="order-item" data-id="udeniaky" data-name="Údenáiky" data-price="8.30">
-            <div style="flex:1">
-              <div class="order-item__name">Údenáiky</div>
-              <div class="order-item__desc">Domácej výroby so zemiakmi a údeným oštiepkom</div>
+              <div class="order-item__name">Údeniaky</div>
+              <div class="order-item__desc">Domácej výroby so zemiakmi a údeným oštiepkom, kyslá smotana</div>
             </div>
             <span class="order-item__price">8,30 €</span>
             <div class="order-item__qty">
@@ -175,6 +170,7 @@
               <button class="qty-btn" data-action="plus">+</button>
             </div>
           </div>
+
           <div class="order-item" data-id="krevety" data-name="Krevetové v šépiovom ceste" data-price="10.20">
             <div style="flex:1">
               <div class="order-item__name">Krevetové v šépiovom ceste</div>
@@ -187,10 +183,11 @@
               <button class="qty-btn" data-action="plus">+</button>
             </div>
           </div>
+
           <div class="order-item" data-id="udene-maso" data-name="S údeným mäsom" data-price="8.10">
             <div style="flex:1">
               <div class="order-item__name">S údeným mäsom</div>
-              <div class="order-item__desc">Pirohy domácej výroby, plnené domácou plnkou</div>
+              <div class="order-item__desc">So zelenkou a údeným mäsom, podávané na bede kapusty</div>
             </div>
             <span class="order-item__price">8,10 €</span>
             <div class="order-item__qty">
@@ -199,10 +196,11 @@
               <button class="qty-btn" data-action="plus">+</button>
             </div>
           </div>
+
           <div class="order-item" data-id="spenatove" data-name="Špenátové s ricottou" data-price="8.10">
             <div style="flex:1">
               <div class="order-item__name">Špenátové s ricottou</div>
-              <div class="order-item__desc">Z baby špenátu a ricotty, podávané s jemným cesnakových dipom</div>
+              <div class="order-item__desc">Z baby špenátu a ricotty, podávané s jemným cesnakovým dipom</div>
             </div>
             <span class="order-item__price">8,10 €</span>
             <div class="order-item__qty">
@@ -211,10 +209,11 @@
               <button class="qty-btn" data-action="plus">+</button>
             </div>
           </div>
+
           <div class="order-item" data-id="tatarcane-slane" data-name="Tatarčané slané" data-price="8.20">
             <div style="flex:1">
               <div class="order-item__name">Tatarčané slané</div>
-              <div class="order-item__desc">Zo zemiakov a tatarskej kapusty</div>
+              <div class="order-item__desc">Pohánkové cesto, tvaroh, zelenka, slanina a jemná cibuľka</div>
             </div>
             <span class="order-item__price">8,20 €</span>
             <div class="order-item__qty">
@@ -226,11 +225,42 @@
         </div>
 
         <div class="order-category">
-          <div class="order-cat-label">🍓 Sladké pirohy</div>
-          <div class="order-item" data-id="tatarcane-sladke" data-name="Tatarčané sladké" data-price="8.10">
+          <div class="order-cat-label">Sladké pirohy</div>
+
+          <div class="order-item" data-id="perky" data-name="Perky" data-price="8.10">
+            <div style="flex:1">
+              <div class="order-item__name">Perky</div>
+              <div class="order-item__desc">Divkový lekvár, posypka podľa výberu (mak / orech / strúhanka), preliata maslom</div>
+            </div>
+            <span class="order-item__price">8,10 €</span>
+            <div class="order-item__qty">
+              <button class="qty-btn" data-action="minus">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" data-action="plus">+</button>
+            </div>
+          </div>
+
+          <div class="order-item" data-id="tatarcane-sladke" data-name="Tatarčané sladké" data-price="8.20">
             <div style="flex:1">
               <div class="order-item__name">Tatarčané sladké</div>
-              <div class="order-item__desc">Zo zemiakov s tvarohom a ovocím podľa sezóny</div>
+              <div class="order-item__desc">Pohánkové cesto, tvaroh, zelenka, preliatie horúcim ovocím</div>
+            </div>
+            <span class="order-item__price">8,20 €</span>
+            <div class="order-item__qty">
+              <button class="qty-btn" data-action="minus">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" data-action="plus">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-category">
+          <div class="order-cat-label">Šúcance</div>
+
+          <div class="order-item" data-id="sucance-slane" data-name="Zemiakové šúcance slané" data-price="8.10">
+            <div style="flex:1">
+              <div class="order-item__name">Zemiakové šúcance slané</div>
+              <div class="order-item__desc">Kyslá kapusta a slanina</div>
             </div>
             <span class="order-item__price">8,10 €</span>
             <div class="order-item__qty">
@@ -239,10 +269,11 @@
               <button class="qty-btn" data-action="plus">+</button>
             </div>
           </div>
-          <div class="order-item" data-id="zemakove-sladke" data-name="Zemiakové sladké" data-price="8.10">
+
+          <div class="order-item" data-id="sucance-sladke" data-name="Zemiakové šúcance sladké" data-price="8.10">
             <div style="flex:1">
-              <div class="order-item__name">Zemiakové sladké</div>
-              <div class="order-item__desc">Klasické pirohy so sladkou plnkou a maslovým preliatím</div>
+              <div class="order-item__name">Zemiakové šúcance sladké</div>
+              <div class="order-item__desc">Posypka podľa výberu, preliatie maslom s lekvárom alebo horúcim ovocím</div>
             </div>
             <span class="order-item__price">8,10 €</span>
             <div class="order-item__qty">
@@ -253,39 +284,12 @@
           </div>
         </div>
 
-        <div class="order-category">
-          <div class="order-cat-label">🥣 Šúcance</div>
-          <div class="order-item" data-id="sucance-slane" data-name="Šúcance slané" data-price="8.20">
-            <div style="flex:1">
-              <div class="order-item__name">Šúcance slané</div>
-              <div class="order-item__desc">Tradičné slovenské šúcance so slanou plnkou</div>
-            </div>
-            <span class="order-item__price">8,20 €</span>
-            <div class="order-item__qty">
-              <button class="qty-btn" data-action="minus">−</button>
-              <span class="qty-num">1</span>
-              <button class="qty-btn" data-action="plus">+</button>
-            </div>
-          </div>
-          <div class="order-item" data-id="sucance-sladke" data-name="Šúcance sladké" data-price="8.20">
-            <div style="flex:1">
-              <div class="order-item__name">Šúcance sladké</div>
-              <div class="order-item__desc">Tradičné slovenské šúcance so sladkou plnkou</div>
-            </div>
-            <span class="order-item__price">8,20 €</span>
-            <div class="order-item__qty">
-              <button class="qty-btn" data-action="minus">−</button>
-              <span class="qty-num">1</span>
-              <button class="qty-btn" data-action="plus">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div><!-- /menu-side -->
 
       <!-- KOŠÍK -->
       <div class="cart-panel">
         <div id="cartContent">
-          <h2 class="cart-title">🥟 Tvoja objednávka</h2>
+          <h2 class="cart-title">Tvoja objednávka</h2>
           <div class="cart-items" id="cartItems">
             <p class="cart-empty" id="cartEmpty">Zatiaľ nič nevybrané.<br>Klikni na položku vľavo.</p>
           </div>
@@ -296,8 +300,8 @@
 
           <form class="order-form" id="orderForm">
             <div class="order-type-row">
-              <button type="button" class="order-type-btn active" data-type="pickup">🚗 Vyzdvihnutie</button>
-              <button type="button" class="order-type-btn" data-type="delivery">🏠 Rozvoz</button>
+              <button type="button" class="order-type-btn active" data-type="pickup">Vyzdvihnutie</button>
+              <button type="button" class="order-type-btn" data-type="delivery">Rozvoz</button>
             </div>
             <input type="hidden" name="order_type" id="orderType" value="pickup">
             <input type="text" name="name" id="custName" placeholder="Meno a priezvisko" required>
@@ -306,7 +310,6 @@
               <input type="text" name="address" id="custAddress" placeholder="Adresa doručenia, Bratislava">
             </div>
             <input type="text" name="note" placeholder="Poznámka (nepovinné)">
-            <!-- Web3Forms key — doplniť -->
             <input type="hidden" name="access_key" value="DOPLNIT_WEB3FORMS_KEY">
             <input type="hidden" name="subject" id="orderSubject" value="Nová objednávka – Pirohovo">
             <input type="hidden" name="from_name" value="Pirohovo Objednávky">
@@ -316,12 +319,13 @@
             </button>
           </form>
         </div>
+
         <div class="order-success" id="orderSuccess">
-          <div class="success-icon">🥟✅</div>
+          <div class="success-icon">✓</div>
           <h3>Objednávka prijatá!</h3>
           <p>Zavoláme vám na <strong id="confirmPhone"></strong> s potvrdením.<br><br>Ďakujeme a tešíme sa na vás!</p>
           <br>
-          <a href="index.html" style="color:var(--gold);text-decoration:none;font-size:.9rem">← Späť na hlavnú stránku</a>
+          <a href="index.html" style="color:var(--gold);text-decoration:none;font-size:.9rem;letter-spacing:.04em">← Späť na hlavnú stránku</a>
         </div>
       </div>
     </div>
@@ -331,7 +335,6 @@
 <script>
 const cart = {};
 
-// Klik na položku
 document.querySelectorAll('.order-item').forEach(item => {
   item.addEventListener('click', function(e) {
     if (e.target.closest('.qty-btn')) return;
@@ -347,7 +350,6 @@ document.querySelectorAll('.order-item').forEach(item => {
   });
 });
 
-// Quantity buttons
 document.querySelectorAll('.order-item').forEach(item => {
   item.querySelectorAll('.qty-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
@@ -403,7 +405,6 @@ function updateCart() {
   totalEl.style.display = 'flex';
   submitBtn.disabled = false;
 
-  // Nastav skrytý textarea s položkami
   const lines = ids.map(id => `${cart[id].qty}× ${cart[id].name} — ${(cart[id].price * cart[id].qty).toFixed(2)} €`);
   lines.push('');
   lines.push('SPOLU: ' + total.toFixed(2) + ' €');
@@ -411,7 +412,6 @@ function updateCart() {
   document.getElementById('orderSubject').value = `Objednávka ${total.toFixed(2)} € – Pirohovo`;
 }
 
-// Typ objednávky
 document.querySelectorAll('.order-type-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.order-type-btn').forEach(b => b.classList.remove('active'));
@@ -422,7 +422,6 @@ document.querySelectorAll('.order-type-btn').forEach(btn => {
   });
 });
 
-// Odoslanie
 document.getElementById('orderForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
@@ -432,7 +431,6 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   btn.textContent = 'Odosiela sa…';
 
   const data = new FormData(this);
-  // Pridaj meno zákazníka do predmetu
   const name = document.getElementById('custName').value;
   const phone = document.getElementById('custPhone').value;
   data.set('subject', `Objednávka od ${name} – Pirohovo`);
@@ -455,12 +453,10 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   }
 });
 
-// Nav burger
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 burger.addEventListener('click', () => navLinks.classList.toggle('open'));
 
-// Cursor pirohy
 (function () {
   const PIROHY = ['🥟','🥟','🥟'];
   var last = 0;
@@ -470,12 +466,15 @@ burger.addEventListener('click', () => navLinks.classList.toggle('open'));
     el.textContent = PIROHY[Math.floor(Math.random() * PIROHY.length)];
     el.style.left = x + 'px'; el.style.top = y + 'px';
     el.style.setProperty('--dx', (Math.random()-.5)*50 + 'px');
-    el.style.setProperty('--dy', -(25+Math.random()*40) + 'px');
-    el.style.setProperty('--rot', (Math.random()<.5?-1:1)*(20+Math.random()*35)+'deg');
+    el.style.setProperty('--dy', -(30+Math.random()*45) + 'px');
+    el.style.setProperty('--rot', (Math.random()<.5?-1:1)*(20+Math.random()*40)+'deg');
     document.body.appendChild(el);
     el.addEventListener('animationend', () => el.remove());
   }
-  window.addEventListener('mousemove', e => { const n=Date.now(); if(n-last<80)return; last=n; emit(e.clientX,e.clientY); }, {passive:true});
+  window.addEventListener('mousemove', e => { const n=Date.now(); if(n-last<85)return; last=n; emit(e.clientX,e.clientY); }, {passive:true});
+  window.addEventListener('click', e => {
+    for(let i=0;i<4;i++) setTimeout(()=>emit(e.clientX+(Math.random()*30-15),e.clientY+(Math.random()*20-10)),i*50);
+  });
 })();
 </script>
 
