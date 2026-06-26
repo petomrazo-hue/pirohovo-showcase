@@ -59,17 +59,17 @@ tabs.forEach(tab => {
   });
 });
 
-// ── Cursor pirohy — autentický tvar pierogi/varenyky (polmesiac, zubatý šev) ──
+// ── Cursor pirohy — brand logo štýl (biely outline dumpling) ──
 (function () {
-  const PIROG_SVG = `<svg viewBox="0 0 58 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Telo: klasický polmesiacový tvar складеного cesta -->
-    <path d="M5 32 C3 32 2 30 3 27 C6 14 16 4 29 4 C42 4 52 14 55 27 C56 30 55 32 53 32 Z"
-          fill="rgba(212,168,67,.38)" stroke="rgba(212,168,67,.92)" stroke-width="2" stroke-linejoin="round"/>
-    <!-- Šev (crimp) — typický znak piroha/pierogu, séria záhybov po okraji -->
-    <path d="M7 28 C9 21 8 19 11 18 C14 17 15 21 18 20 C21 19 21 16 24 14 C27 12 28 16 31 15 C34 14 34 18 37 17 C40 16 40 20 43 19 C46 18 46 22 49 21 C51 20 52 24 53 27"
-          fill="none" stroke="rgba(212,168,67,.55)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- Lesk (dough sheen) -->
-    <path d="M14 17 Q21 9 29 8 Q37 7 44 11" fill="none" stroke="rgba(255,252,235,.28)" stroke-width="2.2" stroke-linecap="round"/>
+  const PIROG_SVG = `<svg viewBox="0 0 64 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Telo pirohu -->
+    <path d="M4 38 C4 38 2 36 4 30 C8 14 18 4 32 4 C46 4 56 14 60 30 C62 36 60 38 60 38 Z"
+          fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.95)" stroke-width="2.2" stroke-linejoin="round"/>
+    <!-- Vrúbkovaný okraj (crimp) — logo štýl -->
+    <path d="M6 33 C8 27 7 24 10 22 C13 20 15 24 18 22 C21 20 22 17 25 15 C28 13 29 17 32 16 C35 15 36 19 39 17 C42 15 43 19 46 18 C49 17 50 21 53 20 C56 19 57 24 58 28"
+          fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Lesk -->
+    <path d="M16 18 Q24 9 32 8 Q40 7 48 12" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round"/>
   </svg>`;
   var last = 0;
   var count = 0;
