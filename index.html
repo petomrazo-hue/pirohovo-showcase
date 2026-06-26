@@ -36,7 +36,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="images/bg1.jpg">
 
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="manifest" href="site.webmanifest">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 
   <!-- Google Consent Mode v2 — default deny (GDPR SK §109 + ePrivacy) -->
   <script>
@@ -144,8 +146,11 @@
 <nav class="nav" id="nav">
   <div class="nav__inner container">
     <a href="/" class="nav__logo" aria-label="Pirohovo – domovská stránka">
-      <img src="images/logo.jpg" alt="Pirohovo logo" class="nav__logo-img" loading="eager" width="44" height="44">
-      <span class="nav__logo-text" aria-hidden="true">PIROHO<span class="logo-heart">&#9829;</span>O</span>
+      <img src="images/logo.jpg" alt="Pirohovo logo" class="nav__logo-img" loading="eager" width="60" height="60">
+      <div class="nav__logo-brand" aria-hidden="true">
+        <span class="nav__logo-text">PIROHO<span class="logo-heart">&#9829;</span>O</span>
+        <span class="nav__logo-sub">VARÍME S LÁSKOU</span>
+      </div>
     </a>
     <ul class="nav__links" id="navLinks">
       <li><a href="#menu">Menu</a></li>
@@ -184,8 +189,12 @@
   </div>
   <div class="hero__particles" id="particles"></div>
   <div class="hero__content">
-    <h1 class="hero__title">Pirohy, <em>aké si pamätáš.</em></h1>
-    <p class="hero__sub">Z vlastného cesta. Tvarované rukou. Každý deň od 11:00.</p>
+    <div class="hero__logo-ring" aria-hidden="true">
+      <img src="images/logo.jpg" alt="" class="hero__ring-img" width="130" height="130" loading="eager">
+    </div>
+    <h1 class="hero__title">PIROHO<span class="logo-heart">&#9829;</span>O</h1>
+    <p class="hero__brand-claim">VARÍME S LÁSKOU</p>
+    <p class="hero__sub">Domáce pirohy · Drive-through · Prešovská, Bratislava</p>
     <div class="hero__ctas">
       <!-- A/B TEST: Variant A — WhatsApp CTA -->
       <a href="https://wa.me/421915671603?text=Dobrý%20deň%2C%20chcem%20si%20objednať%20pirohy." class="btn btn--gold btn--pulse" target="_blank" rel="noopener">
@@ -251,14 +260,24 @@
     </div>
 
     <details class="alergeny-legenda">
-      <summary>ℹ️ Legenda alergénov</summary>
+      <summary>ℹ️ 14 hlavných alergénov (Nariadenie EÚ č. 1169/2011, Príloha II)</summary>
       <ul>
-        <li><strong>1</strong> – Obilniny obsahujúce lepok (pšenica, raž, jačmeň, ovos...)</li>
-        <li><strong>3</strong> – Vajcia a výrobky z vajec</li>
-        <li><strong>7</strong> – Mlieko a výrobky z mlieka (vrátane laktózy)</li>
-        <li><strong>8</strong> – Orechy (mandle, lieskové orechy, vlašské orechy, kešu...)</li>
+        <li><span class="alergen-num">1</span> Obilniny s lepkom – pšenica (špalda, khorasan), raž, jačmeň, ovos a ich hybridy</li>
+        <li><span class="alergen-num">2</span> Kôrovce – krevety, kraby, homáre, langusty a výrobky z nich</li>
+        <li><span class="alergen-num">3</span> Vajcia a výrobky z vajec</li>
+        <li><span class="alergen-num">4</span> Ryby a výrobky z rýb</li>
+        <li><span class="alergen-num">5</span> Arašidy (burské oriešky) a výrobky z arašidov</li>
+        <li><span class="alergen-num">6</span> Sójové bôby a výrobky zo sóje</li>
+        <li><span class="alergen-num">7</span> Mlieko a výrobky z mlieka (vrátane laktózy)</li>
+        <li><span class="alergen-num">8</span> Orechy – mandle, lieskové, vlašské, kešu, pekanové, para, pistácie, makadamové orechy</li>
+        <li><span class="alergen-num">9</span> Zeler (stonky, listy, semená, koreň) a výrobky zo zeleru</li>
+        <li><span class="alergen-num">10</span> Horčica a výrobky z horčice</li>
+        <li><span class="alergen-num">11</span> Sézamové semená a výrobky zo sézamových semien</li>
+        <li><span class="alergen-num">12</span> Oxid siričitý a siričitany (SO₂ &gt;10 mg/kg alebo mg/l)</li>
+        <li><span class="alergen-num">13</span> Vlčí bôb (lupín) a výrobky z lupínu</li>
+        <li><span class="alergen-num">14</span> Mäkkýše (ustrice, slimáky, kalamáre, chobotnice) a výrobky z nich</li>
       </ul>
-      <p>Úplný zoznam alergénov dostupný na požiadanie · 0915 671 603 · info@pirohovo.eu</p>
+      <p>Informácie o alergénoch v nebalených potravinách podľa čl. 44 Nar. EÚ 1169/2011 a § 9a zákona č. 152/1995 Z. z. · Prevádzkovateľ: Pirohovo s.r.o., IČO 57 646 333 · Úplné info na požiadanie: 0915 671 603 · info@pirohovo.eu · <em>Alergény verifikované prevádzkovateľom, nie AI systémom.</em></p>
     </details>
 
     <div class="menu-list" id="menuList">
@@ -459,7 +478,88 @@
 
     </div><!-- /menu-list -->
 
-    <p class="menu-note">Alergény dostupné na požiadanie &nbsp;·&nbsp; <em>Ceny sezónnych špeciálov overte telefonicky — ponuka sa mení</em></p>
+    <p class="menu-note">Ceny sezónnych špeciálov overte telefonicky — ponuka sa mení</p>
+  </div>
+</section>
+
+<!-- ═══════════════ ALERGÉNY — SK legislatíva ═══════════════ -->
+<section class="section alergeny-sekcia" id="alergeny">
+  <div class="container">
+    <div class="sec-head">
+      <span class="label">Bezpečnosť potravín</span>
+      <h2>Všetkých 14 alergénov</h2>
+      <p>Podľa Nariadenia EÚ č. 1169/2011 máte právo vedieť, čo jete — informujeme vás o každom alergéne</p>
+    </div>
+
+    <div class="alergeny-full-grid reveal">
+      <div class="alergen-card">
+        <div class="alergen-card__num">1</div>
+        <div><div class="alergen-card__name">Obilniny s lepkom</div><div class="alergen-card__sub">pšenica, špalda, raž, jačmeň, ovos</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">2</div>
+        <div><div class="alergen-card__name">Kôrovce</div><div class="alergen-card__sub">krevety, kraby, homáre, langusty</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">3</div>
+        <div><div class="alergen-card__name">Vajcia</div><div class="alergen-card__sub">vajcia a výrobky z vajec</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">4</div>
+        <div><div class="alergen-card__name">Ryby</div><div class="alergen-card__sub">ryby a výrobky z rýb</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">5</div>
+        <div><div class="alergen-card__name">Arašidy</div><div class="alergen-card__sub">burské oriešky a výrobky z arašidov</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">6</div>
+        <div><div class="alergen-card__name">Sójové bôby</div><div class="alergen-card__sub">sója a výrobky zo sóje</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">7</div>
+        <div><div class="alergen-card__name">Mlieko &amp; laktóza</div><div class="alergen-card__sub">mlieko a mliečne výrobky (vrátane laktózy)</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">8</div>
+        <div><div class="alergen-card__name">Orechy</div><div class="alergen-card__sub">mandle, lieskové, vlašské, kešu, pekanové, para, pistácie, makadamové</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">9</div>
+        <div><div class="alergen-card__name">Zeler</div><div class="alergen-card__sub">stonky, listy, semená, koreň a výrobky</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">10</div>
+        <div><div class="alergen-card__name">Horčica</div><div class="alergen-card__sub">horčica a výrobky z horčice</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">11</div>
+        <div><div class="alergen-card__name">Sézamové semená</div><div class="alergen-card__sub">semená a výrobky zo sézamu</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">12</div>
+        <div><div class="alergen-card__name">Oxid siričitý / SO₂</div><div class="alergen-card__sub">siričitany nad 10 mg/kg alebo mg/l</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">13</div>
+        <div><div class="alergen-card__name">Lupín (vlčí bôb)</div><div class="alergen-card__sub">lupín a výrobky z lupínu</div></div>
+      </div>
+      <div class="alergen-card">
+        <div class="alergen-card__num">14</div>
+        <div><div class="alergen-card__name">Mäkkýše</div><div class="alergen-card__sub">ustrice, slimáky, kalamáre, chobotnice</div></div>
+      </div>
+    </div>
+
+    <div class="alergeny-legal reveal">
+      <h3>Zákonné informovanie o alergénoch</h3>
+      <p><strong>Pirohovo s.r.o.</strong> (IČO: 57 646 333, sídlo: Rybničná 10191/61B, 831 06 Bratislava) ako prevádzkovateľ potravinárskeho podniku (PPP) je povinná informovať o alergénoch podľa:</p>
+      <p>• <strong>Nariadenia EÚ č. 1169/2011</strong> o poskytovaní informácií o potravinách spotrebiteľom, Príloha II — 14 povinne deklarovaných látok vyvolávajúcich alergie alebo intolerancie<br>
+      • <strong>Čl. 44 nar. EÚ 1169/2011</strong> — pri nebalených potravinách predávaných v stravovacích zariadeniach musí byť alergénna informácia dostupná pred kúpou (ústne alebo písomne)<br>
+      • <strong>Zákon č. 152/1995 Z. z. o potravinách</strong> v znení neskorších predpisov — povinnosť PPP poskytovať správne a úplné informácie o alergénoch<br>
+      • <strong>Vyhláška MPRV SR č. 127/2012 Z. z.</strong> o označovaní potravín</p>
+      <p>Obsah alergénov v jednotlivých pokrmoch vám ochotne oznámime na <strong>0915 671 603</strong> alebo <strong>info@pirohovo.eu</strong>. Upozorňujeme, že v kuchyni pracujeme s alergénmi č. 1, 3 a 7 — krížová kontaminácia nie je vylúčená.</p>
+      <p style="font-size:.74rem;color:var(--lt-muted);font-style:italic;">Informácie o alergénoch sú verifikované prevádzkovateľom Pirohovo s.r.o. — nie automatizovaným AI systémom. Pri zdravotných otázkach a vážnych alergiách kontaktujte priamo prevádzku pred objednávkou.</p>
+    </div>
   </div>
 </section>
 
@@ -726,6 +826,6 @@
 <!-- Instagram embed script -->
 <script async src="//www.instagram.com/embed.js"></script>
 
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>
