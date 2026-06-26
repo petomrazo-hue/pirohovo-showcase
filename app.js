@@ -191,27 +191,39 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // ── Open/closed badge ──
 (function () {
   const badge = document.getElementById('openBadge');
-  if (!badge) return;
+  const heroBadge = document.getElementById('heroOpenBadge');
+  if (!badge && !heroBadge) return;
   const now = new Date();
-  const day = now.getDay(); // 0=Sun,1=Mon,...,6=Sat
-  const hour = now.getHours();
-  const min = now.getMinutes();
-  const time = hour * 60 + min;
+  const day = now.getDay();
+  const time = now.getHours() * 60 + now.getMinutes();
   const isMonday = day === 1;
   const inHours = time >= 11 * 60 && time < 20 * 60;
+  let cls, txt;
   if (!isMonday && inHours) {
-    badge.className = 'open-badge is-open';
-    badge.textContent = 'Dnes otvorené · do 20:00';
+    cls = 'open-badge is-open'; txt = 'Dnes otvorené · do 20:00';
   } else if (isMonday) {
-    badge.className = 'open-badge is-closed';
-    badge.textContent = 'Dnes zatvorené';
+    cls = 'open-badge is-closed'; txt = 'Dnes zatvorené';
   } else if (time >= 20 * 60) {
-    badge.className = 'open-badge is-closed';
-    badge.textContent = 'Dnes zatvorené · otvárame zajtra 11:00';
+    cls = 'open-badge is-closed'; txt = 'Dnes zatvorené · otvárame zajtra 11:00';
   } else {
-    badge.className = 'open-badge is-open';
-    badge.textContent = 'Dnes otvárame o 11:00';
+    cls = 'open-badge is-open'; txt = 'Dnes otvárame o 11:00';
   }
+  if (badge) { badge.className = cls; badge.textContent = txt; }
+  if (heroBadge) { heroBadge.className = cls; heroBadge.textContent = txt; }
+})();
+
+// ── Seasonal bar dismiss ──
+(function () {
+  const bar = document.getElementById('seasonalBar');
+  const btn = document.getElementById('seasonalClose');
+  if (!bar || !btn) return;
+  if (localStorage.getItem('seasonalDismissed') === '1') {
+    bar.style.display = 'none'; return;
+  }
+  btn.addEventListener('click', () => {
+    bar.style.display = 'none';
+    localStorage.setItem('seasonalDismissed', '1');
+  });
 })();
 
 // ── Cookie banner + Google Consent Mode v2 ──

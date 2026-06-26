@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pirohy Bratislava | Pirohovo – Drive-through &amp; Rozvoz</title>
-  <meta name="description" content="Ručne robené pirohy v Bratislave – drive-through &amp; rozvoz. Domáce cesto, vlastné plnky. Prešovská 349/38B, Ut–Ne 11:00–20:00. Objednaj online!">
+  <title>Pirohovo – Domáce pirohy drive-through | Bratislava</title>
+  <meta name="description" content="59× ★★★★★ Google. Ručne robené pirohy v Bratislave – drive-through alebo rozvoz. Prešovská 349/38B, Ut–Ne 11–20:00. Objednaj cez WhatsApp.">
   <meta name="keywords" content="pirohy Bratislava, pirohovo, drive-through Bratislava, rozvoz jedla Bratislava, bryndzové pirohy, domáce pirohy">
   <meta name="theme-color" content="#14130c">
   <link rel="canonical" href="https://pirohovo.eu/">
@@ -36,7 +36,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="images/bg1.jpg">
 
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 
   <!-- Google Consent Mode v2 — default deny (GDPR SK §109 + ePrivacy) -->
   <script>
@@ -145,7 +145,7 @@
   <div class="nav__inner container">
     <a href="/" class="nav__logo" aria-label="Pirohovo – domovská stránka">
       <img src="images/logo.jpg" alt="Pirohovo logo" class="nav__logo-img" loading="eager" width="44" height="44">
-      <span class="nav__logo-text" aria-hidden="true">PIROHO<span class="logo-heart">&#9829;</span>VO</span>
+      <span class="nav__logo-text" aria-hidden="true">PIROHO<span class="logo-heart">&#9829;</span>O</span>
     </a>
     <ul class="nav__links" id="navLinks">
       <li><a href="#menu">Menu</a></li>
@@ -161,6 +161,16 @@
   </div>
 </nav>
 
+<!-- ═══════════════ SEASONAL BAR ═══════════════ -->
+<div class="seasonal-bar" id="seasonalBar">
+  <div class="container seasonal-bar__inner">
+    <span class="seasonal-bar__dot" aria-hidden="true">●</span>
+    <span>Marhuľové pirohy — len pokiaľ sú čerstvé. <strong>Dnes dostupné.</strong></span>
+    <a href="#menu" class="seasonal-bar__cta">Objednaj teraz →</a>
+    <button class="seasonal-bar__close" aria-label="Zavrieť oznam" id="seasonalClose">✕</button>
+  </div>
+</div>
+
 <!-- ═══════════════ HERO ═══════════════ -->
 <main id="main-content">
 <section class="hero" id="home">
@@ -174,26 +184,22 @@
   </div>
   <div class="hero__particles" id="particles"></div>
   <div class="hero__content">
-    <!-- Zlatý ornamentálny divider namiesto čierneho logo kruhu -->
-    <div class="hero__orn" aria-hidden="true">
-      <span class="hero__orn-line"></span>
-      <span class="hero__orn-gem">✦</span>
-      <span class="hero__orn-label">VARÍME S LÁSKOU</span>
-      <span class="hero__orn-gem">✦</span>
-      <span class="hero__orn-line"></span>
-    </div>
-    <h1 class="hero__title">Ručne robené pirohy, <br><em>aké ste ešte nejedli</em></h1>
-    <p class="hero__sub">Každý kus tvarovaný z ruky — domáce cesto, vlastné plnky. Bratislava vie, kde sú najlepšie.</p>
+    <h1 class="hero__title">Pirohy, <em>aké si pamätáš.</em></h1>
+    <p class="hero__sub">Z vlastného cesta. Tvarované rukou. Každý deň od 11:00.</p>
     <div class="hero__ctas">
-      <a href="order.html" class="btn btn--gold btn--pulse">Objednať online</a>
-      <a href="#menu" class="btn btn--outline">Pozrieť menu</a>
+      <!-- A/B TEST: Variant A — WhatsApp CTA -->
+      <a href="https://wa.me/421915671603?text=Dobrý%20deň%2C%20chcem%20si%20objednať%20pirohy." class="btn btn--gold btn--pulse" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-2px;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Objednaj cez WhatsApp →
+      </a>
+      <a href="#menu" class="btn btn--outline">Čo varíme dnes</a>
     </div>
     <div class="hero__meta-row">
       <a href="https://maps.app.goo.gl/NEu2ToTrzShk7BaFA" target="_blank" rel="noopener" class="hero__meta-item hero__meta-reviews" aria-label="Zobraziť 59 recenzií na Google Maps"><span class="hero__star" aria-hidden="true">★★★★★</span>&nbsp;<strong>5,0</strong> · 59 recenzií Google</a>
       <span class="hero__meta-sep">·</span>
       <span class="hero__meta-item">Ut–Ne · 11:00–20:00</span>
       <span class="hero__meta-sep">·</span>
-      <span class="hero__meta-item">Drive-through &amp; rozvoz</span>
+      <span class="hero__meta-item" id="heroOpenBadge"></span>
     </div>
   </div>
   <div class="hero__arrow"><span></span></div>
@@ -209,14 +215,22 @@
   </ul>
 </div>
 
-<!-- ═══════════════ SEASONAL ═══════════════ -->
-<div class="seasonal">
-  <div class="container seasonal__inner">
-    <span class="seasonal__deco">✦</span>
-    <span>Sezónne špeciály sa menia — pýtajte sa na aktuálnu ponuku!</span>
-    <span class="seasonal__deco">✦</span>
+<!-- ═══════════════ PROOF STRIP ═══════════════ -->
+<section class="proof-strip" aria-label="Zákaznícke recenzie">
+  <div class="container proof-strip__inner">
+    <div class="proof-strip__rating">
+      <span class="proof-strip__stars" aria-label="5 z 5 hviezdičiek" aria-hidden="true">★★★★★</span>
+      <strong class="proof-strip__score">5,0</strong>
+      <span class="proof-strip__label">· 59 recenzií Google</span>
+    </div>
+    <div class="proof-strip__quotes">
+      <blockquote>"Najlepšie pirohy čo som jedol v živote."</blockquote>
+      <blockquote>"Drive-through ide rýchlo, pirohy sú vždy horúce."</blockquote>
+      <blockquote>"Bryndzové — vraciam sa každý týždeň."</blockquote>
+    </div>
+    <a href="https://maps.app.goo.gl/NEu2ToTrzShk7BaFA" target="_blank" rel="noopener" class="proof-strip__link">Čítaj všetky recenzie →</a>
   </div>
-</div>
+</section>
 
 <!-- ═══════════════ MENU ═══════════════ -->
 <section class="section" id="menu">
@@ -225,6 +239,7 @@
       <span class="label">Čo varíme</span>
       <h2>Naše menu</h2>
       <p>Každý pirog ručne tvarovaný, plnený domácou plnkou</p>
+      <p class="menu-value-badge">Domáce. Ručné. Od 8,10 € — to je 1,16 € za jeden pirog.</p>
     </div>
 
     <div class="menu-tabs" role="tablist" aria-label="Filtrovať menu podľa kategórie">
@@ -256,52 +271,72 @@
         </div>
         <ul class="menu-items">
           <li class="mitem" data-cat="slane">
-            <div class="mitem__row">
-              <span class="mitem__name">Bryndzové <span class="mbadge mbadge--star">★ Bestseller</span></span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">10,20 €</span>
+            <div class="mitem__img mitem__img--slane" aria-hidden="true"><span class="mitem__img-icon">🥟</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Bryndzové <span class="mbadge mbadge--star">★ Bestseller</span></span>
+                <span class="mitem__price">10,20 €</span>
+              </div>
+              <p class="mitem__desc">So slaninou, kyslou smotanou a jarnou cibuľkou / pažítkou</p>
+              <p class="mitem__tagline">Slovenský klasik v najlepšej forme — vracajú sa kvôli nemu každý týždeň.</p>
+              <span class="mitem__weight">7 ks · 250 g · Alergény 1,3,7</span>
             </div>
-            <p class="mitem__desc">So slaninou, kyslou smotanou a jarnou cibuľkou / pažítkou <span class="mitem__weight">· 7 ks · 250 g · Alergény 1,3,7</span></p>
           </li>
           <li class="mitem" data-cat="slane">
-            <div class="mitem__row">
-              <span class="mitem__name">Krevetové v sépiovom ceste <span class="mbadge mbadge--new">NOVINKA</span></span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">10,20 €</span>
+            <div class="mitem__img mitem__img--slane" aria-hidden="true"><span class="mitem__img-icon">🦐</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Krevetové v sépiovom ceste <span class="mbadge mbadge--new">NOVINKA</span></span>
+                <span class="mitem__price">10,20 €</span>
+              </div>
+              <p class="mitem__desc">Krevety na bielom víne s koreňovou zeleninou, koriandrom, cesnakom a chilli, preliate orientálnou omáčkou domácej výroby</p>
+              <p class="mitem__tagline">Krevety z bieleho vína, sépiové cesto — na toto sa vrátia aj tí, čo pirohy nepoznajú.</p>
+              <span class="mitem__weight">7 ks · 250 g · Alergény 1,3,7</span>
             </div>
-            <p class="mitem__desc">Krevety na bielom víne s koreňovou zeleninou, koriandrom, cesnakom a chilli, preliate orientálnou omáčkou domácej výroby <span class="mitem__weight">· 7 ks · 250 g · Alergény 1,3,7</span></p>
           </li>
           <li class="mitem" data-cat="slane">
-            <div class="mitem__row">
-              <span class="mitem__name">Údeniaky</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">8,30 €</span>
+            <div class="mitem__img mitem__img--slane" aria-hidden="true"><span class="mitem__img-icon">🥟</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Údeniaky</span>
+                <span class="mitem__price">8,30 €</span>
+              </div>
+              <p class="mitem__desc">So zemiakmi a údeným oštiepkom, podávané s kyslou smotanou</p>
+              <span class="mitem__weight">7 ks · 250 g · Alergény 1,3,7</span>
             </div>
-            <p class="mitem__desc">So zemiakmi a údeným oštiepkom, podávané s kyslou smotanou <span class="mitem__weight">· 7 ks · 250 g · Alergény 1,3,7</span></p>
           </li>
           <li class="mitem" data-cat="slane">
-            <div class="mitem__row">
-              <span class="mitem__name">S údeným mäsom</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">8,10 €</span>
+            <div class="mitem__img mitem__img--slane" aria-hidden="true"><span class="mitem__img-icon">🥟</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">S údeným mäsom</span>
+                <span class="mitem__price">8,10 €</span>
+              </div>
+              <p class="mitem__desc">So zemiakmi a údeným mäsom, podávané na bielej kapuste</p>
+              <span class="mitem__weight">6 ks · 250 g · Alergény 1,3,7</span>
             </div>
-            <p class="mitem__desc">So zemiakmi a údeným mäsom, podávané na bielej kapuste <span class="mitem__weight">· 6 ks · 250 g · Alergény 1,3,7</span></p>
           </li>
           <li class="mitem" data-cat="slane">
-            <div class="mitem__row">
-              <span class="mitem__name">Špenátové s Ricottou</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">8,10 €</span>
+            <div class="mitem__img mitem__img--slane" aria-hidden="true"><span class="mitem__img-icon">🌿</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Špenátové s Ricottou</span>
+                <span class="mitem__price">8,10 €</span>
+              </div>
+              <p class="mitem__desc">S baby špenátom a ricottou, podávané s jemným cesnakovým dipom</p>
+              <span class="mitem__weight">7 ks · 250 g · Alergény 1,3,7</span>
             </div>
-            <p class="mitem__desc">S baby špenátom a ricottou, podávané s jemným cesnakovým dipom <span class="mitem__weight">· 7 ks · 250 g · Alergény 1,3,7</span></p>
           </li>
           <li class="mitem" data-cat="slane">
-            <div class="mitem__row">
-              <span class="mitem__name">Tatárčané slané</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">8,20 €</span>
+            <div class="mitem__img mitem__img--slane" aria-hidden="true"><span class="mitem__img-icon">🌾</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Tatárčané slané</span>
+                <span class="mitem__price">8,20 €</span>
+              </div>
+              <p class="mitem__desc">Z pohánkovej múky so zemiakmi a tvarohom, podávané s opraženou cibuľkou</p>
+              <span class="mitem__weight">7 ks · 250 g · Alergény 1,3,7</span>
             </div>
-            <p class="mitem__desc">Z pohánkovej múky so zemiakmi a tvarohom, podávané s opraženou cibuľkou <span class="mitem__weight">· 7 ks · 250 g · Alergény 1,3,7</span></p>
           </li>
         </ul>
       </div>
@@ -314,28 +349,38 @@
         </div>
         <ul class="menu-items">
           <li class="mitem" data-cat="sladke">
-            <div class="mitem__row">
-              <span class="mitem__name">Perky</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">8,10 €</span>
+            <div class="mitem__img mitem__img--sladke" aria-hidden="true"><span class="mitem__img-icon">🫐</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Perky</span>
+                <span class="mitem__price">8,10 €</span>
+              </div>
+              <p class="mitem__desc">So slivkovým lekvárom a posypkou podľa výberu (mak / orech / pražená strúhanka), preliate rozpusteným maslom</p>
+              <span class="mitem__weight">7 ks · 250 g · Alergény 1,3,7,8</span>
             </div>
-            <p class="mitem__desc">So slivkovým lekvárom a posypkou podľa výberu (mak / orech / pražená strúhanka), preliate rozpusteným maslom <span class="mitem__weight">· 7 ks · 250 g · Alergény 1,3,7,8</span></p>
           </li>
           <li class="mitem" data-cat="sladke">
-            <div class="mitem__row">
-              <span class="mitem__name">Tatárčané sladké</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">8,20 €</span>
+            <div class="mitem__img mitem__img--sladke" aria-hidden="true"><span class="mitem__img-icon">🌾</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Tatárčané sladké</span>
+                <span class="mitem__price">8,20 €</span>
+              </div>
+              <p class="mitem__desc">Z pohánkovej múky so zemiakmi a tvarohom, preliate horúcim ovocím</p>
+              <span class="mitem__weight">7 ks · 250 g · Alergény 1,3,7</span>
             </div>
-            <p class="mitem__desc">Z pohánkovej múky so zemiakmi a tvarohom, preliate horúcim ovocím <span class="mitem__weight">· 7 ks · 250 g · Alergény 1,3,7</span></p>
           </li>
           <li class="mitem" data-cat="sladke">
-            <div class="mitem__row">
-              <span class="mitem__name">Marhuľové <span class="mbadge mbadge--season">Sezónne</span></span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">9,00 €</span>
+            <div class="mitem__img mitem__img--sladke" aria-hidden="true"><span class="mitem__img-icon">🍑</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Marhuľové <span class="mbadge mbadge--season">Sezónne</span></span>
+                <span class="mitem__price">9,00 €</span>
+              </div>
+              <p class="mitem__desc">Plnené čerstvými marhuľami, obalené v panko strúhanke, podávané v smotanovo-marhuľovom kréme</p>
+              <p class="mitem__tagline">Čerstvé marhuľky, panko kôra, smotanový krém. Keď nie sú marhuľky, nie je ani táto špeciálka.</p>
+              <span class="mitem__weight">7 ks · 250 g · Alergény 1,3,7,8</span>
             </div>
-            <p class="mitem__desc">Plnené čerstvými marhuľami, obalené v panko strúhanke, podávané v smotanovo-marhuľovom kréme <span class="mitem__weight">· 7 ks · 250 g · Alergény 1,3,7,8</span></p>
           </li>
         </ul>
       </div>
@@ -348,20 +393,26 @@
         </div>
         <ul class="menu-items">
           <li class="mitem" data-cat="sucance">
-            <div class="mitem__row">
-              <span class="mitem__name">Zemiakové šúľance sladké</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">8,10 €</span>
+            <div class="mitem__img mitem__img--sucance" aria-hidden="true"><span class="mitem__img-icon">🫙</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Zemiakové šúľance sladké</span>
+                <span class="mitem__price">8,10 €</span>
+              </div>
+              <p class="mitem__desc">S posypkou podľa výberu (mak / orech / pražená strúhanka), preliate maslom so slivkovým lekvárom alebo horúcim ovocím</p>
+              <span class="mitem__weight">250 g · Alergény 1,3,7,8</span>
             </div>
-            <p class="mitem__desc">S posypkou podľa výberu (mak / orech / pražená strúhanka), preliate maslom so slivkovým lekvárom alebo horúcim ovocím <span class="mitem__weight">· 250 g · Alergény 1,3,7,8</span></p>
           </li>
           <li class="mitem" data-cat="sucance">
-            <div class="mitem__row">
-              <span class="mitem__name">Šúľance s kapustou a slaninkou</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">8,80 €</span>
+            <div class="mitem__img mitem__img--sucance" aria-hidden="true"><span class="mitem__img-icon">🥬</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Šúľance s kapustou a slaninkou</span>
+                <span class="mitem__price">8,80 €</span>
+              </div>
+              <p class="mitem__desc">S kyslosladkou kapustou a slaninkou</p>
+              <span class="mitem__weight">250 g · Alergény 1,3,7</span>
             </div>
-            <p class="mitem__desc">S kyslosladkou kapustou a slaninkou <span class="mitem__weight">· 250 g · Alergény 1,3,7</span></p>
           </li>
         </ul>
       </div>
@@ -374,28 +425,34 @@
         </div>
         <ul class="menu-items">
           <li class="mitem" data-cat="napoje">
-            <div class="mitem__row">
-              <span class="mitem__name">Coca Cola</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">2,50 €</span>
+            <div class="mitem__img mitem__img--napoje" aria-hidden="true"><span class="mitem__img-icon">🥤</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Coca Cola</span>
+                <span class="mitem__price">2,50 €</span>
+              </div>
+              <span class="mitem__weight">330 ml · Alergény: žiadne deklarované</span>
             </div>
-            <p class="mitem__desc"><span class="mitem__weight">330 ml · Alergény: žiadne deklarované</span></p>
           </li>
           <li class="mitem" data-cat="napoje">
-            <div class="mitem__row">
-              <span class="mitem__name">Minerálna voda</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">2,50 €</span>
+            <div class="mitem__img mitem__img--napoje" aria-hidden="true"><span class="mitem__img-icon">💧</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Minerálna voda</span>
+                <span class="mitem__price">2,50 €</span>
+              </div>
+              <span class="mitem__weight">330 ml · Alergény: žiadne deklarované</span>
             </div>
-            <p class="mitem__desc"><span class="mitem__weight">330 ml · Alergény: žiadne deklarované</span></p>
           </li>
           <li class="mitem" data-cat="napoje">
-            <div class="mitem__row">
-              <span class="mitem__name">Domáce šťavy</span>
-              <span class="mitem__dots"></span>
-              <span class="mitem__price">2,50 €</span>
+            <div class="mitem__img mitem__img--napoje" aria-hidden="true"><span class="mitem__img-icon">🍊</span></div>
+            <div class="mitem__content">
+              <div class="mitem__header">
+                <span class="mitem__name">Domáce šťavy</span>
+                <span class="mitem__price">2,50 €</span>
+              </div>
+              <span class="mitem__weight">250 ml, ponuka podľa sezóny · Alergény: pýtajte sa</span>
             </div>
-            <p class="mitem__desc"><span class="mitem__weight">250 ml, ponuka podľa sezóny · Alergény: pýtajte sa</span></p>
           </li>
         </ul>
       </div>
@@ -442,6 +499,21 @@
         Sledujte nás @pirohovo · 1 734 sledovateľov
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════ EMAIL CAPTURE ═══════════════ -->
+<section class="email-capture">
+  <div class="container">
+    <h2>Dostávaj správu o sezónnych špeciáloch ako prvý.</h2>
+    <p>Nový špeciál oznámime len odberateľom — a pri prvej objednávke po registrácii pirog navyše.</p>
+    <form class="email-form" action="https://formsubmit.co/info@pirohovo.eu" method="POST">
+      <input type="email" name="email" placeholder="tvoj@email.sk" required aria-label="E-mailová adresa">
+      <button type="submit" class="btn btn--gold">Chcem vedieť o novinkách</button>
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Nový odberateľ Pirohovo">
+    </form>
+    <p class="email-gdpr">Bez spamu. Odhlás sa kedykoľvek jedným klikom.</p>
   </div>
 </section>
 
@@ -497,7 +569,7 @@
   <div class="container">
     <div class="sec-head">
       <span class="label">Náš príbeh</span>
-      <h2>Poctivé pirohy<br><em> s láskou</em></h2>
+      <h2>Odkiaľ sme<br><em>a prečo pirohy</em></h2>
     </div>
     <div class="o-nas__quote reveal">
       <blockquote class="o-nas__blockquote">
@@ -506,14 +578,14 @@
     </div>
     <div class="o-nas__grid">
       <div class="o-nas__text reveal">
-        <p>Každý pirog u nás vzniká ručne — z pravého zemiakového cesta, plneného domácimi plnkami. Nič zmrazené, nič z vrecka. Iba suroviny, čas a láska k remeslu.</p>
-        <p>Nájdete nás na Prešovskej 38B v Bratislave. Príďte na mieste, objednajte cez drive-through, alebo si dajte doniesť domov.</p>
+        <p>Pirohovo vzniklo z jednoduchého nápadu — v Bratislave chýbalo miesto, kde dostaneš skutočné pirohy tak, aké robí stará mama na dedinách. Cesto miešame každé ráno, plnky varíme z čerstvých surovín bez kompromisov.</p>
+        <p>Nájdeš nás na Prešovskej. Príď na mieste, vyzdvihni cez drive-through okienko, alebo ti prinesieme domov. Utorok až nedeľa od 11:00.</p>
         <div class="rating-box">
-          <span class="stars">★★★★★</span>
+          <span class="stars" aria-hidden="true">★★★★★</span>
           <div>
-            <strong>5,0</strong> — 59 recenzií na Google
+            <strong>59 zákazníkov. Každý dal 5 hviezdičiek.</strong>
             <br>
-            <a href="https://maps.app.goo.gl/NEu2ToTrzShk7BaFA" class="ilink" target="_blank" rel="noopener">Nechajte nám recenziu →</a>
+            <a href="https://maps.app.goo.gl/NEu2ToTrzShk7BaFA" class="ilink" target="_blank" rel="noopener">Overí Google →</a>
           </div>
         </div>
       </div>
@@ -522,19 +594,19 @@
           <span class="pillar__icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V13"/><path d="M12 13C12 8 17 5 17 5C17 5 17 10 12 13"/><path d="M12 13C12 8 7 5 7 5C7 5 7 10 12 13"/><path d="M12 17C12 13 15 10 15 10"/><path d="M12 17C12 13 9 10 9 10"/></svg>
           </span>
-          <div><h3>Domáce cesto</h3><p>Zemiakové cesto pripravujeme každý deň čerstvé, bez konzervantov</p></div>
+          <div><h3>Domáce cesto</h3><p>Zemiakové cesto miešame každé ráno. Nič z vreca, nič uskladnené do zajtra.</p></div>
         </div>
         <div class="pillar">
           <span class="pillar__icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </span>
-          <div><h3>Varíme s láskou</h3><p>Každá plnka pochádza z vlastnej receptúry s dušou</p></div>
+          <div><h3>Vlastné receptúry</h3><p>Každá plnka má svoju receptúru. Meníme ju keď nájdeme lepšiu surovinu — nie keď treba šetriť.</p></div>
         </div>
         <div class="pillar">
           <span class="pillar__icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2a8 8 0 0 1-8-8v-1a2 2 0 0 1 2-2h1"/></svg>
           </span>
-          <div><h3>Ručná výroba</h3><p>Žiadne stroje — každý pirog sformovaný ručne, tak ako má byť</p></div>
+          <div><h3>Ručná výroba</h3><p>Žiadne formy, žiadne stroje. Každý pirog dostane tvar od konkrétnych rúk.</p></div>
         </div>
       </div>
     </div>
@@ -596,7 +668,7 @@
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
-      <span class="footer__logo" aria-label="Pirohovo" role="img">PIROHO<span class="logo-heart" aria-hidden="true">&#9829;</span>VO</span>
+      <span class="footer__logo" aria-label="Pirohovo" role="img">PIROHO<span class="logo-heart" aria-hidden="true">&#9829;</span>O</span>
       <span class="footer__tag">Varíme s láskou</span>
     </div>
     <div class="footer__socials">
@@ -627,7 +699,8 @@
 
 <!-- ═══════════════ FLOATING PRVKY ═══════════════ -->
 <!-- WhatsApp -->
-<a href="https://wa.me/421915671603" class="float-wa" target="_blank" rel="noopener" aria-label="Kontaktuj nás cez WhatsApp">
+<a href="https://wa.me/421915671603?text=Dobrý%20deň%2C%20chcem%20si%20objednať%20pirohy." class="float-wa" target="_blank" rel="noopener" aria-label="Kontaktuj nás cez WhatsApp">
+  <span class="float-wa__tooltip">Objednaj — odpovíme do 5 min</span>
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
@@ -653,6 +726,6 @@
 <!-- Instagram embed script -->
 <script async src="//www.instagram.com/embed.js"></script>
 
-<script src="app.js?v=6"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>
