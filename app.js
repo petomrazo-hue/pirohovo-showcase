@@ -58,18 +58,25 @@ if (burger && navLinks) {
   });
 }
 
-// ── Reveal on scroll ──
+// ── Reveal on scroll (so stagger podľa pozície v skupine) ──
 const reveals = document.querySelectorAll('.reveal');
 if (reveals.length) {
+  // nastav stagger index: poradie medzi .reveal súrodencami v rovnakom rodičovi
+  reveals.forEach((el) => {
+    const sibs = Array.from(el.parentElement ? el.parentElement.children : [])
+      .filter((c) => c.classList && c.classList.contains('reveal'));
+    const idx = sibs.indexOf(el);
+    el.style.setProperty('--rvi', Math.min(idx < 0 ? 0 : idx, 6));
+  });
   const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        entry.target.classList.add('visible');   // delay rieši CSS --rvi
         revealObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.06 });
-  reveals.forEach(el => revealObs.observe(el));
+  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  reveals.forEach((el) => revealObs.observe(el));
 }
 
 // ── Menu category filter (menu.html) ──
