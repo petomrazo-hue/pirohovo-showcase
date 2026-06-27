@@ -235,3 +235,37 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
 })();
 
+
+// ── Easter egg: klik na logo zaplní header pirohmi 🥟 ──
+(function () {
+  const logo = document.querySelector('.nav__logo');
+  if (!logo) return;
+  const isHome = location.pathname === '/' ||
+                 location.pathname === '' ||
+                 location.pathname.endsWith('/index.html');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let busy = false;
+  function burst() {
+    if (busy) return; busy = true;
+    const N = 36;
+    for (let i = 0; i < N; i++) {
+      const s = document.createElement('span');
+      s.className = 'egg-pirog';
+      s.textContent = '🥟';
+      s.style.left = (Math.random() * 100) + 'vw';
+      s.style.fontSize = (1 + Math.random() * 2) + 'rem';
+      s.style.setProperty('--dx', (Math.random() * 80 - 40) + 'px');
+      s.style.setProperty('--rot', (Math.random() * 900 - 450) + 'deg');
+      s.style.animationDelay = (Math.random() * 0.35) + 's';
+      s.style.animationDuration = (1.7 + Math.random() * 1.4) + 's';
+      document.body.appendChild(s);
+      s.addEventListener('animationend', () => s.remove());
+    }
+    setTimeout(() => { busy = false; }, 700);
+  }
+
+  logo.addEventListener('click', (e) => {
+    if (isHome) { e.preventDefault(); burst(); }   // domov: easter egg miesto reloadu
+  });
+})();
