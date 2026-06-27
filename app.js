@@ -1,20 +1,54 @@
-/* Pirohovo app.js v34 */
+/* Pirohovo app.js v36 */
 
-// ── Nav pirog roam ──
+// ── Nav pirohy roam (3 independent) ──
 (function () {
-  const pirog = document.getElementById('navPirog');
   const navEl = document.getElementById('nav');
-  if (!pirog || !navEl) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  function roam() {
-    const w = navEl.offsetWidth;
-    const minX = 120, maxX = w - 180;
-    if (maxX <= minX) return;
-    const x = minX + Math.random() * (maxX - minX);
-    pirog.style.left = x + 'px';
-    setTimeout(roam, 3500 + Math.random() * 3000);
+  if (!navEl || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const configs = [
+    { id: 'navPirog1', minL: 130, minR: 200, speed: 2800, spread: 2200 },
+    { id: 'navPirog2', minL: 190, minR: 260, speed: 3800, spread: 2600 },
+    { id: 'navPirog3', minL: 110, minR: 170, speed: 4600, spread: 3200 },
+  ];
+  configs.forEach(({ id, minL, minR, speed, spread }, i) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    function roam() {
+      const w = navEl.offsetWidth;
+      const max = w - minR;
+      if (max <= minL) return;
+      el.style.left = (minL + Math.random() * (max - minL)) + 'px';
+      setTimeout(roam, speed + Math.random() * spread);
+    }
+    setTimeout(roam, 500 + i * 1100);
+  });
+})();
+
+// ── Closing countdown ──
+(function () {
+  const el = document.getElementById('heroClosing');
+  if (!el) return;
+  function update() {
+    const now = new Date();
+    const day = now.getDay(), h = now.getHours(), m = now.getMinutes();
+    if (day === 1 || h < 11 || h >= 20) { el.style.display = 'none'; return; }
+    const mins = (19 - h) * 60 + (60 - m);
+    const hh = Math.floor(mins / 60), mm = mins % 60;
+    el.textContent = hh > 0 ? `· Zatvára za ${hh}h ${mm}min` : `· Zatvára za ${mm} min ⚡`;
+    el.style.display = 'inline';
   }
-  setTimeout(roam, 1500);
+  update();
+  setInterval(update, 60000);
+})();
+
+// ── Sticky order strip ──
+(function () {
+  const strip = document.getElementById('orderStrip');
+  if (!strip) return;
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  window.addEventListener('scroll', () => {
+    strip.classList.toggle('is-visible', hero.getBoundingClientRect().bottom < 0);
+  }, { passive: true });
 })();
 
 // ── Nav scroll ──

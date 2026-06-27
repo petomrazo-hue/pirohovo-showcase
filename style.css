@@ -77,26 +77,33 @@ body::after {
   flex-shrink: 0;
 }
 
-/* ── FLOATING PIROG (nav header decoration) ──── */
+/* ── FLOATING PIROHY (nav header — 3 independent) ── */
 .nav-pirog {
-  position: absolute;
-  top: 50%; transform: translateY(-50%) rotate(-8deg);
-  left: 50%;
-  font-size: 1.15rem;
-  opacity: 0.55;
-  pointer-events: none; user-select: none;
-  z-index: 10;
+  position: absolute; top: 50%;
+  pointer-events: none; user-select: none; z-index: 10;
   will-change: left, transform;
-  transition: left 1.4s cubic-bezier(.45,.05,.55,.95), opacity .4s;
-  animation: navPirogBob 2.8s ease-in-out infinite;
-  filter: drop-shadow(0 1px 6px rgba(212,44,31,.35));
+  transition: left 2s cubic-bezier(.38,.05,.58,.95);
+  filter: drop-shadow(0 1px 6px rgba(212,44,31,.4));
 }
-@keyframes navPirogBob {
+.nav-pirog--1 { font-size: 1.25rem; opacity: .58; animation: navBob1 3.1s ease-in-out infinite; }
+.nav-pirog--2 { font-size: .92rem; opacity: .35; animation: navBob2 2.4s ease-in-out infinite .75s; }
+.nav-pirog--3 { font-size: .72rem; opacity: .20; animation: navBob3 4.2s ease-in-out infinite 1.5s; }
+@keyframes navBob1 {
   0%,100% { transform: translateY(-50%) rotate(-8deg); }
-  50%     { transform: translateY(calc(-50% - 5px)) rotate(6deg); }
+  50%     { transform: translateY(calc(-50% - 7px)) rotate(5deg); }
+}
+@keyframes navBob2 {
+  0%,100% { transform: translateY(-50%) rotate(7deg); }
+  30%     { transform: translateY(calc(-50% - 5px)) rotate(-3deg); }
+  70%     { transform: translateY(calc(-50% + 3px)) rotate(10deg); }
+}
+@keyframes navBob3 {
+  0%,100% { transform: translateY(-50%) rotate(-5deg) scale(1); }
+  40%     { transform: translateY(calc(-50% - 9px)) rotate(8deg) scale(1.12); }
+  80%     { transform: translateY(calc(-50% + 2px)) rotate(-2deg) scale(.95); }
 }
 @media (prefers-reduced-motion: reduce) { .nav-pirog { animation: none; } }
-@media (max-width: 600px) { .nav-pirog { display: none; } }
+@media (max-width: 760px) { .nav-pirog { display: none; } }
 
 /* ── 6. TYPOGRAPHY ──────────────────────────── */
 .label {
@@ -1141,6 +1148,89 @@ body::after {
 .float-bolt:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(52,209,134,.5); }
 .float-wolt:focus-visible { outline: 2px solid #009DE0; outline-offset: 3px; }
 .float-bolt:focus-visible { outline: 2px solid #34D186; outline-offset: 3px; }
+/* Tooltip on hover */
+.float-wolt::after, .float-bolt::after {
+  content: attr(data-tip);
+  position: absolute; right: 62px; top: 50%; transform: translateY(-50%);
+  background: var(--surface3); color: var(--text);
+  font-size: .72rem; font-weight: 600; white-space: nowrap;
+  padding: 6px 12px; border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.5);
+  border: 1px solid var(--border);
+  opacity: 0; transition: opacity .2s; pointer-events: none;
+}
+.float-wolt:hover::after, .float-bolt:hover::after { opacity: 1; }
+
+/* ── Sticky order strip (appears after hero scroll) ── */
+.order-strip {
+  position: fixed; top: 60px; left: 0; right: 0; z-index: 400;
+  display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
+  background: rgba(11,10,7,.97); border-bottom: 1px solid rgba(255,255,255,.1);
+  padding: 7px 20px;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0,0,0,.4);
+  opacity: 0; pointer-events: none;
+  transform: translateY(-100%);
+  transition: opacity .3s, transform .3s;
+}
+.order-strip.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.order-strip__label { font-size: .7rem; color: var(--muted); font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+.order-strip__btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 14px; border-radius: 100px;
+  font-size: .78rem; font-weight: 700; text-decoration: none;
+  transition: transform .15s;
+}
+.order-strip__btn:hover { transform: scale(1.06); }
+.order-strip__btn--wolt { background: #009DE0; color: #fff; }
+.order-strip__btn--bolt { background: #34D186; color: #111; }
+.order-strip__btn--call { background: rgba(255,255,255,.08); color: var(--text); border: 1px solid rgba(255,255,255,.12); }
+@media (max-width: 768px) { .order-strip { display: none; } }
+
+/* ── Hero delivery badge + countdown ── */
+.hero__delivery-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; justify-content: center; }
+.hero__delivery-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .05em;
+  background: rgba(52,209,134,.1); color: #7dda9d;
+  border: 1px solid rgba(52,209,134,.25);
+  padding: 3px 10px; border-radius: 100px;
+}
+.hero__closing { color: var(--gold); font-size: .78rem; font-weight: 600; display: none; }
+
+/* ── Menu card order link ── */
+.mcard__order {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 10px; font-size: .78rem; font-weight: 700;
+  color: #009DE0; text-decoration: none; transition: opacity .2s;
+}
+.mcard__order:hover { opacity: .7; }
+.mcard__urgency {
+  display: inline-block; font-size: .68rem; font-weight: 700;
+  background: rgba(212,44,31,.15); color: var(--red-l);
+  border: 1px solid rgba(212,44,31,.25);
+  padding: 2px 8px; border-radius: 100px; margin-top: 6px;
+}
+
+/* ── FAQ WhatsApp CTA ── */
+.faq-cta {
+  margin-top: 32px; padding: 22px 26px;
+  background: rgba(37,211,102,.07);
+  border: 1px solid rgba(37,211,102,.18);
+  border-radius: var(--r-lg);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.faq-cta__text { font-size: .9rem; color: var(--dim); line-height: 1.5; }
+.faq-cta__text strong { color: var(--text); }
+.faq-cta__btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #25d366; color: #fff;
+  padding: 11px 22px; border-radius: 100px;
+  font-weight: 700; font-size: .85rem; text-decoration: none;
+  transition: transform .2s, box-shadow .2s; white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(37,211,102,.3);
+}
+.faq-cta__btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.45); }
 
 /* ── 25. COOKIE BANNER ──────────────────────── */
 .cookie-banner {
