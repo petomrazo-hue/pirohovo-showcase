@@ -42,8 +42,8 @@ html { scroll-behavior: smooth; }
 .brand-heart-svg {
   display: inline-block;
   vertical-align: -0.12em;
-  width: 0.54em;
-  height: 0.60em;
+  width: 0.50em;
+  height: 0.57em;
   margin: 0 0.04em;
   flex-shrink: 0;
 }
@@ -554,8 +554,10 @@ h3 {
     padding: 10px 0 14px;
   }
   .menu-cats-visual::-webkit-scrollbar { display: none; }
-  .cat-card { font-size: 1.1rem; padding: 12px 6px 10px; min-width: 68px; }
+  .cat-card { font-size: 1.1rem; padding: 12px 6px 10px; min-width: 68px; min-height: 72px; }
 }
+
+.menu-section { overflow: visible; }
 
 .menu-cat__head { margin-bottom: 28px; }
 .menu-cat__title {
@@ -1150,9 +1152,10 @@ h3 {
     gap: 32px; transform: translateX(100%); transition: transform .35s ease;
     z-index: 200;
   }
-  .nav__links.open { transform: translateX(0); }
+  .nav__links.open { transform: translateX(0); z-index: 600; }
   .nav__links a { font-size: 1.5rem; color: var(--text); }
   .nav__burger { display: flex; z-index: 201; position: relative; }
+  .nav__burger.is-open { z-index: 601; }
 }
 
 @media (max-width: 960px) {
@@ -1195,16 +1198,21 @@ h3 {
 
 /* ═══════════════ STICKY MOBILE ORDER BAR ═══════════════ */
 .mobile-order-bar {
-  display: none;
+  display: grid;
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
   background: #0e0d07;
   border-top: 1px solid rgba(255,255,255,.12);
   padding: 10px 16px 14px;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 8px;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 6px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
+/* always push content above bar */
+body { padding-bottom: 74px; }
+.footer { padding-bottom: 80px; }
+.float-wa { bottom: 88px; }
+.float-top { bottom: 88px; right: 60px; }
 .mob-btn {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 4px; border-radius: 12px; border: none; cursor: pointer;
@@ -1224,10 +1232,23 @@ h3 {
 .mob-btn--call:active, .mob-btn--nav:active { background: rgba(255,255,255,.14); }
 
 @media (max-width: 768px) {
-  .mobile-order-bar { display: grid; }
-  /* push float-wa up above order bar */
-  .float-wa { bottom: 88px; }
-  .float-top { bottom: 88px; right: 60px; }
-  /* body padding so last section not hidden behind bar */
-  body { padding-bottom: 74px; }
+  /* bar already always-on; mobile-specific tweaks only */
+  .mobile-order-bar { grid-template-columns: 2fr 1fr 1fr 1fr; }
 }
+
+/* ═══ GOOGLE LOGO ═══ */
+.logo-google { vertical-align: -4px; margin-right: 3px; flex-shrink: 0; display: inline-block; }
+
+/* ═══ WOLT / BOLT ═══ */
+.btn--wolt { background: #009DE0; color: #fff; border-color: #009DE0; }
+.btn--wolt:hover { background: #0087c0; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,157,224,.4); }
+.btn--bolt { background: #34D186; color: #1a1a1a; border-color: #34D186; }
+.btn--bolt:hover { background: #28b872; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(52,209,134,.4); }
+.hero__delivery-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
+.mob-btn--wolt { background: #009DE0; color: #fff; border: none; }
+.mob-btn--bolt { background: #34D186; color: #1a1a1a; border: none; }
+.mob-btn--wolt:active, .mob-btn--bolt:active { opacity: .85; }
+
+/* ═══ REELS ═══ */
+.reel-link { display: block; text-decoration: none; color: inherit; }
+.reel-link:hover .reel-embed { border-color: rgba(212,44,31,.5); transform: translateY(-3px); transition: transform .2s, border-color .2s; }
