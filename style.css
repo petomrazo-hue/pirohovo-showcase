@@ -64,10 +64,9 @@ body::after {
 
 .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
 
-/* ═══════════════ CINEMATIC BG ═══════════════ */
+/* ═══════════════ CINEMATIC BG — disabled (IG promo fotky s textom) ═══════════════ */
 .bg-cinema {
-  position: fixed; inset: 0; z-index: -2;
-  overflow: hidden;
+  display: none;
 }
 
 .bg-slide {
@@ -92,15 +91,7 @@ body::after {
   100% { opacity: 1; transform: scale(1.06); }
 }
 
-.bg-overlay {
-  position: fixed; inset: 0; z-index: -1;
-  background:
-    linear-gradient(to bottom,
-      rgba(14,12,4,.55) 0%,
-      rgba(14,12,4,.72) 45%,
-      rgba(14,12,4,.96) 100%);
-  pointer-events: none;
-}
+.bg-overlay { display: none; }
 
 /* Hero SVG pirohy dekorácie */
 .hero__decos {
@@ -294,6 +285,10 @@ body::after {
   display: flex; align-items: center; justify-content: center; text-align: center;
   position: relative; overflow: hidden;
   padding: 140px 28px 100px;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 30%, rgba(42,28,6,.6) 0%, transparent 70%),
+    linear-gradient(165deg, #1c1708 0%, #0e0c04 40%, #0a0800 100%);
+  background-color: #0e0c04;
 }
 
 /* Warm radial glow */
@@ -1132,14 +1127,8 @@ h3 {
   .footer__inner { flex-direction: column; text-align: center; }
   .footer__socials { justify-content: center; }
 
-  /* Disable fixed cinematic bg on mobile — iOS bleedthrough fix */
-  .bg-cinema, .bg-overlay { display: none; }
+  /* Mobile — cinematic bg already disabled globally */
   body::after { display: none; }
-  .hero {
-    background: linear-gradient(to bottom, rgba(14,12,4,.52) 0%, rgba(14,12,4,.92) 100%),
-                url('images/bg1.jpg') center 85% / cover no-repeat;
-    background-color: #14130c;
-  }
 }
 
 @media (max-width: 500px) {
