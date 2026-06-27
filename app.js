@@ -80,7 +80,6 @@ catCards.forEach(card => {
     const f = card.dataset.filter;
     tabs.forEach(t => { if (t.dataset.filter === f) { t.classList.add('active'); t.setAttribute('aria-selected', 'true'); } });
     applyFilter(f);
-    document.getElementById('menuList')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
 });
 
