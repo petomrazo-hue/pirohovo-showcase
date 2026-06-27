@@ -10,8 +10,8 @@
   <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=41">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Gochi+Hand&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=42">
   <script src="cookies.js?v=1"></script>
   <style>
     .order-page { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 20px 120px; }
@@ -19,7 +19,7 @@
     .order-back:hover { color: var(--gold); }
     .order-hero { text-align: center; margin-bottom: 48px; }
     .order-hero__label { font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
-    .order-hero__title { font-family: var(--display); font-size: clamp(2.2rem,6vw,3.6rem); font-weight: 900; color: var(--text); text-transform: uppercase; letter-spacing: .08em; line-height: 1.1; margin-bottom: 12px; }
+    .order-hero__title { font-family: var(--font-logo); font-size: clamp(2.6rem,7vw,4.2rem); font-weight: 400; color: var(--text); letter-spacing: .02em; line-height: 1.05; margin-bottom: 12px; }
     .order-hero__sub { color: var(--muted); font-size: .95rem; }
     .order-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; max-width: 640px; }
     .order-card { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 36px 28px; border-radius: 20px; text-decoration: none; transition: transform .2s, box-shadow .2s; border: 2px solid transparent; }
@@ -27,7 +27,7 @@
     .order-card--bolt { background: #34D186; color: #1a1a1a; }
     .order-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.35); }
     .order-card__logo { width: 64px; height: 64px; }
-    .order-card__name { font-family: var(--display); font-size: 1.8rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+    .order-card__name { font-family: var(--font-body); font-size: 1.5rem; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; }
     .order-card__desc { font-size: .82rem; opacity: .8; text-align: center; line-height: 1.5; }
     .order-card__cta { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,.15); padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: .88rem; margin-top: 4px; }
     .order-card--bolt .order-card__cta { background: rgba(0,0,0,.12); }
@@ -46,9 +46,7 @@
   <div class="container nav__inner">
     <a href="/" class="nav__logo" aria-label="Pirohovo – domovská stránka">
       <img src="images/logo.jpg" alt="Pirohovo logo" width="36" height="36" loading="eager" style="border-radius:50%">
-      <div class="nav__brand">
-        <div class="nav__name">PIROH<svg class="brand-heart" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 84 C22 66 0 48 0 26 C0 10 13 0 26 0 C36 0 45 9 50 21 C55 9 64 0 74 0 C87 0 100 10 100 26 C100 48 78 66 50 84 Z" fill="#e5201c"/></svg>VO</div>
-      </div>
+      <span class="nav__logo-name">PIROH<svg class="brand-heart" viewBox="0 0 100 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 84 C22 66 0 48 0 26 C0 10 13 0 26 0 C36 0 45 9 50 21 C55 9 64 0 74 0 C87 0 100 10 100 26 C100 48 78 66 50 84 Z" fill="#e5201c"/></svg>VO</span>
     </a>
     <ul class="nav__links" id="navLinks" role="list">
       <li><a href="/menu.html">Menu</a></li>

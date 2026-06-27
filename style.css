@@ -24,6 +24,7 @@
   --r-lg:     20px;
   --max:      1200px;
   --font-brand: 'Amatic SC', cursive;
+  --font-logo:  'Gochi Hand', 'Amatic SC', cursive;
   --font-body:  'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -70,10 +71,10 @@ body::after {
 /* ── 5. BRAND HEART ─────────────────────────── */
 .brand-heart {
   display: inline-block;
-  vertical-align: -0.12em;
-  width: 0.52em;
-  height: 0.60em;
-  margin: 0 0.03em;
+  vertical-align: -0.05em;
+  width: 0.66em;
+  height: 0.72em;
+  margin: 0 0.04em;
   flex-shrink: 0;
 }
 
@@ -229,9 +230,9 @@ body::after {
   transform: scale(1.06);
 }
 .nav__logo-name {
-  font-family: var(--font-brand);
-  font-size: clamp(1.9rem, 2.8vw, 2.6rem);
-  font-weight: 700; letter-spacing: .06em;
+  font-family: var(--font-logo);
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  font-weight: 400; letter-spacing: .01em;
   color: var(--text); white-space: nowrap; line-height: 1;
 }
 
@@ -1027,8 +1028,8 @@ body::after {
 }
 .footer__brand { display: flex; flex-direction: column; gap: 6px; }
 .footer__logo {
-  font-family: var(--font-brand);
-  font-size: 2rem; font-weight: 700; letter-spacing: .08em;
+  font-family: var(--font-logo);
+  font-size: 1.85rem; font-weight: 400; letter-spacing: .02em;
   color: var(--text); text-transform: uppercase; text-decoration: none;
 }
 .footer__tagline { font-size: .7rem; letter-spacing: .18em; color: var(--ghost); text-transform: uppercase; }
@@ -1060,6 +1061,8 @@ body::after {
 .footer__sep { color: rgba(255,255,255,.15); font-size: .75rem; }
 .footer__company p { font-size: .73rem; color: rgba(245,240,232,.25); line-height: 1.8; }
 .footer__copy { font-size: .76rem; color: var(--ghost); }
+.footer__credit a { color: var(--muted); text-decoration: none; font-weight: 600; letter-spacing: .04em; transition: color .2s; }
+.footer__credit a:hover { color: var(--red); }
 
 /* ── 24. FLOATING ELEMENTS ──────────────────── */
 .float-wa {
@@ -1578,6 +1581,7 @@ body::after {
   text-transform: uppercase; color: var(--text);
   margin-bottom: 14px; line-height: .95;
 }
+.page-header h1.brand-h1 { font-family: var(--font-logo); font-weight: 400; letter-spacing: .02em; }
 .page-header p { font-size: .97rem; color: var(--muted); max-width: 500px; line-height: 1.7; }
 .page-header .back-link {
   display: inline-flex; align-items: center; gap: 6px;
