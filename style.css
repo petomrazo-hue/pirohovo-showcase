@@ -73,10 +73,10 @@ body::after {
 /* ── 5. BRAND HEART ─────────────────────────── */
 .brand-heart {
   display: inline-block;
-  vertical-align: -0.06em;
-  width: 0.50em;
-  height: 0.56em;
-  margin: 0 0.02em;
+  vertical-align: -0.14em;
+  width: 0.60em;
+  height: 0.74em;
+  margin: 0 0.03em;
   flex-shrink: 0;
 }
 
