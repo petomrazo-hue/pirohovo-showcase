@@ -39,6 +39,14 @@ html { scroll-behavior: smooth; }
 .skip-link:focus { top: 8px; }
 
 .logo-heart { color: var(--red); }
+.brand-heart-svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0.65em;
+  height: 0.9em;
+  margin: 0 0.04em -0.06em;
+  flex-shrink: 0;
+}
 
 body {
   background: var(--bg);
