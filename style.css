@@ -1126,6 +1126,15 @@ h3 {
   .trust__row { flex-direction: column; align-items: flex-start; gap: 12px; }
   .footer__inner { flex-direction: column; text-align: center; }
   .footer__socials { justify-content: center; }
+
+  /* Disable fixed cinematic bg on mobile — iOS bleedthrough fix */
+  .bg-cinema, .bg-overlay { display: none; }
+  body::after { display: none; }
+  .hero {
+    background: linear-gradient(to bottom, rgba(14,12,4,.52) 0%, rgba(14,12,4,.92) 100%),
+                url('images/bg1.jpg') center 85% / cover no-repeat;
+    background-color: #14130c;
+  }
 }
 
 @media (max-width: 500px) {
