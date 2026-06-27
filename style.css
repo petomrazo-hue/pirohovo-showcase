@@ -1218,6 +1218,32 @@ h3 {
   line-height: 1.8; letter-spacing: .02em;
 }
 
+/* ═══════════════ ZLATÁ FIRMA BADGE ═══════════════ */
+.trust__item--award { order: -1; }
+.trust__award-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  text-decoration: none; color: var(--gold-d);
+  font-family: var(--display); letter-spacing: .06em; font-size: .95rem;
+  border: 1px solid rgba(212,168,67,.3); border-radius: 100px;
+  padding: 4px 14px; transition: border-color .2s, color .2s;
+}
+.trust__award-link:hover { border-color: var(--gold); color: var(--gold); }
+.trust__award-star { color: var(--gold); font-size: 1rem; }
+
+.proof-strip__award { flex-shrink: 0; }
+.zf-badge {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; padding: 10px 16px;
+  border: 1.5px solid rgba(212,168,67,.35); border-radius: var(--r);
+  background: rgba(212,168,67,.05); transition: border-color .2s, background .2s;
+}
+.zf-badge:hover { border-color: var(--gold); background: rgba(212,168,67,.09); }
+.zf-badge__star { font-size: 1.8rem; color: var(--gold); line-height: 1; }
+.zf-badge__text { font-size: .8rem; color: var(--lt-text); line-height: 1.4; }
+.zf-badge__text strong { font-family: var(--display); font-size: 1rem; letter-spacing: .06em; color: var(--gold-d); }
+.zf-badge__text small { color: var(--lt-muted); font-size: .72rem; }
+.rating-box--award { background: rgba(212,168,67,.05); }
+
 /* ═══════════════ FLOATING ELEMENTS ═══════════════ */
 .float-wa {
   position: fixed; bottom: 80px; right: 20px; z-index: 9991;
