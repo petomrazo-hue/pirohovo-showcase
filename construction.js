@@ -1,4 +1,4 @@
-/* ░░ PIROHOVO — UNDER CONSTRUCTION overlay (manuálny spínač) ░░
+/* ░░ PIROHOVO — UNDER CONSTRUCTION overlay (manuálny spínač) v2 ░░
    Zapni:  UC_ON = true  + deploy (git push main)
    Vypni:  UC_ON = false + deploy
 
@@ -42,9 +42,13 @@
   var PIN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
   var PHONE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.37 19.79 19.79 0 0 1 1.61.73 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
 
+  function isOpenNow() {
+    var d = new Date(), day = d.getDay(), t = d.getHours() * 60 + d.getMinutes();
+    return day !== 1 && t >= 11 * 60 && t < 20 * 60;
+  }
+
   function statusHTML() {
-    var d = new Date(), day = d.getDay(), h = d.getHours();
-    var open = day !== 1 && h >= 11 && h < 20;   // Po(1) zatvorené, inak 11–20
+    var open = isOpenNow();
     return '<span class="uc-status ' + (open ? 'is-open' : 'is-closed') + '">' +
              '<span class="uc-dot"></span>' +
              (open ? 'Otvorené teraz' : 'Teraz zatvorené') +
@@ -65,7 +69,7 @@
           '<span class="uc-logo-wrap"><img class="uc-logo" src="images/logo.jpg" alt="Pirohovo logo" width="92" height="92"></span>' +
           '<img class="uc-wordmark" src="images/wordmark.png" alt="Pirohovo" width="753" height="267">' +
         '</div>' +
-        '<div class="uc-piroh-hero" aria-hidden="true">🥟</div>' +
+        '<div class="uc-piroh-hero" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 46" width="1em" height="0.72em" fill="none"><path d="M4 38 C4 38 2 36 4 30 C8 14 18 4 32 4 C46 4 56 14 60 30 C62 36 60 38 60 38 Z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2.2" stroke-linejoin="round"/><path d="M6 33 C8 27 7 24 10 22 C13 20 15 24 18 22 C21 20 22 17 25 15 C28 13 29 17 32 16 C35 15 36 19 39 17 C42 15 43 19 46 18 C49 17 50 21 53 20 C56 19 57 24 58 28" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg></div>' +
         '<h1 class="uc-title">Chvíľu strpenia</h1>' +
         '<div class="uc-clock" id="uc-clock" aria-label="Aktuálny čas"></div>' +
         '<p class="uc-sub">Stránka je <b>dočasne v údržbe</b>. Čerstvé domáce pirohy si objednáš stále:</p>' +
@@ -97,6 +101,18 @@
       var mm = String(d.getMinutes()).padStart(2, '0');
       var ss = String(d.getSeconds()).padStart(2, '0');
       el.textContent = hh + ':' + mm + ':' + ss;
+      // Refresh open/closed status every minute (on second=0)
+      if (d.getSeconds() === 0) {
+        var statusEl = document.querySelector('#uc .uc-status');
+        if (statusEl) {
+          var open2 = isOpenNow();
+          statusEl.className = 'uc-status ' + (open2 ? 'is-open' : 'is-closed');
+          var textNode = statusEl.lastChild;
+          if (textNode && textNode.nodeType === 3) {
+            textNode.textContent = (open2 ? 'Otvorené teraz' : 'Teraz zatvorené') + ' · Ut–Ne 11–20';
+          }
+        }
+      }
     }
     tick();
     setInterval(tick, 1000);
@@ -108,7 +124,29 @@
       for (var i = 0; i < N; i++) {
         var s = document.createElement('span');
         s.className = 'uc-piroh';
-        s.textContent = '🥟';
+        s.setAttribute('aria-hidden', 'true');
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 64 46');
+        svg.setAttribute('width', '1.4em');
+        svg.setAttribute('height', '1em');
+        svg.setAttribute('fill', 'none');
+        svg.style.display = 'inline-block';
+        svg.style.verticalAlign = 'middle';
+        var path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path1.setAttribute('d', 'M4 38 C4 38 2 36 4 30 C8 14 18 4 32 4 C46 4 56 14 60 30 C62 36 60 38 60 38 Z');
+        path1.setAttribute('fill', 'rgba(255,255,255,0.25)');
+        path1.setAttribute('stroke', 'white');
+        path1.setAttribute('stroke-width', '2');
+        path1.setAttribute('stroke-linejoin', 'round');
+        var path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path2.setAttribute('d', 'M6 33 C8 27 7 24 10 22 C13 20 15 24 18 22 C21 20 22 17 25 15 C28 13 29 17 32 16 C35 15 36 19 39 17 C42 15 43 19 46 18 C49 17 50 21 53 20 C56 19 57 24 58 28');
+        path2.setAttribute('fill', 'none');
+        path2.setAttribute('stroke', 'rgba(255,255,255,0.6)');
+        path2.setAttribute('stroke-width', '1.5');
+        path2.setAttribute('stroke-linecap', 'round');
+        svg.appendChild(path1);
+        svg.appendChild(path2);
+        s.appendChild(svg);
         s.style.left = (Math.random() * 95 + 1) + '%';
         s.style.fontSize = (0.9 + Math.random() * 1.8) + 'rem';
         s.style.opacity = (0.10 + Math.random() * 0.18).toFixed(2);

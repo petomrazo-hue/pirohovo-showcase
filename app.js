@@ -1,4 +1,4 @@
-/* Pirohovo app.js v39 */
+/* Pirohovo app.js v40 */
 
 // ── i18n strings (SK/EN/DE) ──
 const _LANG = document.documentElement.lang || 'sk';
@@ -36,6 +36,9 @@ const _T = {
   closingM: (m) => `· Zatvára za ${m} min ⚡`,
 };
 
+// Shared pirog SVG for animations (scales with font-size via em)
+const PIROG_SVG_ANIM = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 46" width="1.4em" height="1em" fill="none" style="display:inline-block;vertical-align:middle"><path d="M4 38 C4 38 2 36 4 30 C8 14 18 4 32 4 C46 4 56 14 60 30 C62 36 60 38 60 38 Z" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="2.4" stroke-linejoin="round"/><path d="M6 33 C8 27 7 24 10 22 C13 20 15 24 18 22 C21 20 22 17 25 15 C28 13 29 17 32 16 C35 15 36 19 39 17 C42 15 43 19 46 18 C49 17 50 21 53 20 C56 19 57 24 58 28" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+
 // ── Closing countdown ──
 (function () {
   const el = document.getElementById('heroClosing');
@@ -53,15 +56,16 @@ const _T = {
   setInterval(update, 60000);
 })();
 
-// ── Sticky order strip ──
+// ── Sticky order strip (IntersectionObserver — no forced reflow on scroll) ──
 (function () {
   const strip = document.getElementById('orderStrip');
   if (!strip) return;
   const hero = document.querySelector('.hero');
   if (!hero) return;
-  window.addEventListener('scroll', () => {
-    strip.classList.toggle('is-visible', hero.getBoundingClientRect().bottom < 0);
-  }, { passive: true });
+  new IntersectionObserver(
+    (entries) => strip.classList.toggle('is-visible', !entries[0].isIntersecting),
+    { threshold: 0 }
+  ).observe(hero);
 })();
 
 // ── Nav scroll ──
@@ -73,31 +77,45 @@ window.addEventListener('scroll', () => {
   if (heroBg) heroBg.style.transform = `scale(1.06) translateY(${y * 0.22}px)`;
 }, { passive: true });
 
-// ── Mobile burger ──
+// ── Mobile burger (iOS-safe scroll lock via position:fixed) ──
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 if (burger && navLinks) {
+  let _scrollY = 0;
+  function lockBody() {
+    _scrollY = window.scrollY;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${_scrollY}px`;
+    document.body.style.width = '100%';
+  }
+  function unlockBody() {
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, _scrollY);
+  }
+  function closeNav() {
+    navLinks.classList.remove('open');
+    burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    if (nav) nav.classList.remove('menu-open');
+    unlockBody();
+  }
   burger.addEventListener('click', () => {
     const open = navLinks.classList.toggle('open');
     burger.classList.toggle('is-open', open);
     burger.setAttribute('aria-expanded', String(open));
     if (nav) nav.classList.toggle('menu-open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    open ? lockBody() : unlockBody();
   });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      burger.classList.remove('is-open');
-      burger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
-  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 }
 
-// ── Reveal on scroll (so stagger podľa pozície v skupine) ──
+// ── Reveal on scroll ──
 const reveals = document.querySelectorAll('.reveal');
 if (reveals.length) {
-  // nastav stagger index: poradie medzi .reveal súrodencami v rovnakom rodičovi
   reveals.forEach((el) => {
     const sibs = Array.from(el.parentElement ? el.parentElement.children : [])
       .filter((c) => c.classList && c.classList.contains('reveal'));
@@ -107,7 +125,7 @@ if (reveals.length) {
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');   // delay rieši CSS --rvi
+        entry.target.classList.add('visible');
         revealObs.unobserve(entry.target);
       }
     });
@@ -115,7 +133,7 @@ if (reveals.length) {
   reveals.forEach((el) => revealObs.observe(el));
 }
 
-// ── Menu category filter (menu.html) ──
+// ── Menu category filter ──
 const catBtns = document.querySelectorAll('.menu-cat-btn');
 const catSections = document.querySelectorAll('.menu-cat-section');
 if (catBtns.length && catSections.length) {
@@ -126,18 +144,15 @@ if (catBtns.length && catSections.length) {
       btn.setAttribute('aria-selected', 'true');
       const f = btn.dataset.filter;
       catSections.forEach(sec => {
-        if (f === 'all' || sec.dataset.group === f) {
-          sec.style.display = '';
-        } else {
-          sec.style.display = 'none';
-        }
+        sec.style.display = (f === 'all' || sec.dataset.group === f) ? '' : 'none';
       });
     });
   });
 }
 
-// ── Cursor pirog effect (brand logo-style outline dumpling) ──
+// ── Cursor pirog effect ──
 (function () {
+  if (window.__UC__) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if ('ontouchstart' in window && navigator.maxTouchPoints > 1) return;
 
@@ -193,6 +208,7 @@ if (catBtns.length && catSections.length) {
 
 // ── Flour particles ──
 (function () {
+  if (window.__UC__) return;
   const container = document.getElementById('particles');
   if (!container) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -244,34 +260,34 @@ if (backTop) {
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ── Open/closed badge + delivery badge (jedna spoločná logika) ──
+// ── Open/closed badge + delivery badge (refreshes every minute) ──
 (function () {
-  const now = new Date();
-  const day = now.getDay();  // 0=Sun, 1=Mon
-  const time = now.getHours() * 60 + now.getMinutes();
-  const isMonday = day === 1;
-  const inHours = time >= 11 * 60 && time < 20 * 60;
-  const isOpen = !isMonday && inHours;   // skutočne otvorené teraz
+  function updateBadge() {
+    const now = new Date();
+    const day = now.getDay();
+    const time = now.getHours() * 60 + now.getMinutes();
+    const isMonday = day === 1;
+    const inHours = time >= 11 * 60 && time < 20 * 60;
+    const isOpen = !isMonday && inHours;
 
-  // Status badge (hero + kontakt)
-  const badges = [document.getElementById('openBadge'), document.getElementById('heroOpenBadge')].filter(Boolean);
-  let cls, txt;
-  if (isOpen) {
-    cls = 'open-badge is-open'; txt = _T.open;
-  } else if (isMonday) {
-    cls = 'open-badge is-closed'; txt = _T.closedMon;
-  } else if (time >= 20 * 60) {
-    cls = 'open-badge is-closed'; txt = _T.closedAfter;
-  } else {
-    cls = 'open-badge is-closed'; txt = _T.closedBefore;
+    const badges = [document.getElementById('openBadge'), document.getElementById('heroOpenBadge')].filter(Boolean);
+    let cls, txt;
+    if (isOpen) {
+      cls = 'open-badge is-open'; txt = _T.open;
+    } else if (isMonday) {
+      cls = 'open-badge is-closed'; txt = _T.closedMon;
+    } else if (time >= 20 * 60) {
+      cls = 'open-badge is-closed'; txt = _T.closedAfter;
+    } else {
+      cls = 'open-badge is-closed'; txt = _T.closedBefore;
+    }
+    badges.forEach(b => { b.className = cls; b.textContent = txt; });
+    document.querySelectorAll('.hero__delivery-badge').forEach(d => {
+      d.style.display = isOpen ? '' : 'none';
+    });
   }
-  badges.forEach(b => { b.className = cls; b.textContent = txt; });
-
-  // Rozvoz „~35 min" sa zobrazí LEN keď je naozaj otvorené.
-  // (Nesmie svietiť „Zatvorené" a zároveň „Rozvoz za 35 min".)
-  document.querySelectorAll('.hero__delivery-badge').forEach(d => {
-    d.style.display = isOpen ? '' : 'none';
-  });
+  updateBadge();
+  setInterval(updateBadge, 60000);
 })();
 
 // ── Seasonal bar dismiss ──
@@ -287,8 +303,9 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
 
 
-// ── Easter egg: klik na logo zaplní header pirohmi 🥟 ──
+// ── Easter egg: klik na logo zaplní header pirohmi ──
 (function () {
+  if (window.__UC__) return;
   const logo = document.querySelector('.nav__logo');
   if (!logo) return;
   const isHome = location.pathname === '/' ||
@@ -299,13 +316,11 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   let busy = false;
   function burst() {
     if (busy) return; busy = true;
-    // logo poskočí
     logo.classList.remove('logo-pop'); void logo.offsetWidth; logo.classList.add('logo-pop');
-    const N = 52;
-    for (let i = 0; i < N; i++) {
+    for (let i = 0; i < 52; i++) {
       const s = document.createElement('span');
       s.className = 'egg-pirog';
-      s.textContent = '🥟';
+      s.innerHTML = PIROG_SVG_ANIM;
       s.style.left = (Math.random() * 100) + 'vw';
       s.style.fontSize = (0.9 + Math.random() * 2.1) + 'rem';
       s.style.setProperty('--dx', (Math.random() * 90 - 45) + 'px');
@@ -313,25 +328,26 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
       s.style.animationDelay = (Math.random() * 0.45) + 's';
       s.style.animationDuration = (1.7 + Math.random() * 1.5) + 's';
       document.body.appendChild(s);
-      s.addEventListener('animationend', () => s.remove());
+      s.addEventListener('animationend', () => s.remove(), { once: true });
     }
     setTimeout(() => { busy = false; }, 600);
   }
 
   logo.addEventListener('click', (e) => {
-    if (isHome) { e.preventDefault(); burst(); }   // domov: easter egg miesto reloadu
+    if (isHome) { e.preventDefault(); burst(); }
   });
 })();
 
-// ── Plávajúce pirohy v hlavičke (nav lišta) — driftujú naprieč ──
+// ── Plávajúce pirohy v hlavičke (nav lišta) ──
 (function () {
+  if (window.__UC__) return;
   const layer = document.getElementById('navPirohy');
   if (!layer) return;
   const N = window.matchMedia('(max-width: 768px)').matches ? 5 : 9;
   for (let i = 0; i < N; i++) {
     const s = document.createElement('span');
     s.className = 'nav__piroh';
-    s.textContent = '🥟';
+    s.innerHTML = PIROG_SVG_ANIM;
     s.style.top = (8 + Math.random() * 58) + '%';
     s.style.fontSize = (0.7 + Math.random() * 0.7) + 'rem';
     s.style.setProperty('--op', (0.22 + Math.random() * 0.3).toFixed(2));

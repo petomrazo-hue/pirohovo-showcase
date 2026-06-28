@@ -341,7 +341,7 @@
   }
 
   function show(expanded) {
-    current = readStored() ? readStored().categories : defaultState();
+    var _stored = readStored(); current = _stored ? _stored.categories : defaultState();
     var node = build();
     syncSwitches(current);
     if (expanded) {
