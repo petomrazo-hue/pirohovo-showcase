@@ -77,20 +77,14 @@ html.uc-on, html.uc-on body { overflow: hidden !important; }
 @keyframes ucGlow { from { opacity: .5; } to { opacity: 1; } }
 .uc-wordmark { width: clamp(180px, 60vw, 248px); height: auto; opacity: .97; }
 
-/* ── kicker + shimmer ── */
-.uc-kicker {
-  position: relative; display: inline-block; overflow: hidden;
-  font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
-  color: #daa830; padding: 6px 16px; margin-bottom: 18px;
-  border: 1px solid rgba(196,149,32,.4); border-radius: 999px;
-  background: rgba(196,149,32,.08);
+/* ── piroh hero ── */
+.uc-piroh-hero {
+  font-size: clamp(3.4rem, 13vw, 5.6rem);
+  line-height: 1;
+  margin: 0 0 14px;
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,.55));
+  display: block;
 }
-.uc-shine {
-  position: absolute; top: 0; left: -60%; width: 50%; height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent);
-  animation: ucShine 3.4s ease-in-out infinite;
-}
-@keyframes ucShine { 0% { left: -60%; } 55%,100% { left: 130%; } }
 
 /* ── title ── */
 .uc-title {
@@ -100,6 +94,17 @@ html.uc-on, html.uc-on body { overflow: hidden !important; }
   background: linear-gradient(180deg, #f5f0e8, #e8372a 165%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
+/* ── aktuálny čas ── */
+.uc-clock {
+  font-family: 'Amatic SC', cursive;
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 700;
+  color: rgba(245,240,232,.38);
+  letter-spacing: 4px;
+  margin: 2px 0 22px;
+  display: block;
+}
+
 .uc-sub {
   color: rgba(245,240,232,.78); font-size: clamp(.95rem, 2.6vw, 1.06rem);
   line-height: 1.6; max-width: 430px; margin: 0 auto 26px;
@@ -166,7 +171,7 @@ html.uc-on, html.uc-on body { overflow: hidden !important; }
 
 /* ── respektuj reduced-motion ── */
 @media (prefers-reduced-motion: reduce) {
-  .uc-stage > *, .uc-logo-wrap, .uc-logo-wrap::before, .uc-shine, .uc-status.is-open .uc-dot, .uc-piroh {
+  .uc-stage > *, .uc-logo-wrap, .uc-logo-wrap::before, .uc-status.is-open .uc-dot, .uc-piroh, .uc-piroh-hero {
     animation: none !important;
   }
   .uc-stage > * { opacity: 1; transform: none; }

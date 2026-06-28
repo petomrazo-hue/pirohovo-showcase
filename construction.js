@@ -65,8 +65,9 @@
           '<span class="uc-logo-wrap"><img class="uc-logo" src="images/logo.jpg" alt="Pirohovo logo" width="92" height="92"></span>' +
           '<img class="uc-wordmark" src="images/wordmark.png" alt="Pirohovo" width="753" height="267">' +
         '</div>' +
-        '<span class="uc-kicker">Pracujeme na novom webe<i class="uc-shine"></i></span>' +
-        '<h1 class="uc-title">Chvíľu strpenia 🥟</h1>' +
+        '<div class="uc-piroh-hero" aria-hidden="true">🥟</div>' +
+        '<h1 class="uc-title">Chvíľu strpenia</h1>' +
+        '<div class="uc-clock" id="uc-clock" aria-label="Aktuálny čas"></div>' +
         '<p class="uc-sub">Stránka je <b>dočasne v údržbe</b>. Čerstvé domáce pirohy si objednáš stále:</p>' +
         '<div class="uc-actions">' +
           '<a class="uc-btn uc-btn--wolt" href="' + WOLT + '" target="_blank" rel="noopener noreferrer"><img src="images/wolt-96.png" alt="">Wolt</a>' +
@@ -86,6 +87,18 @@
         '</div>' +
       '</div>';
     document.body.appendChild(o);
+
+    // živé hodiny
+    function tick() {
+      var el = document.getElementById('uc-clock');
+      if (!el) return;
+      var d = new Date();
+      var hh = String(d.getHours()).padStart(2, '0');
+      var mm = String(d.getMinutes()).padStart(2, '0');
+      el.textContent = hh + ':' + mm;
+    }
+    tick();
+    setInterval(tick, 1000);
 
     // ambientné plávajúce pirohy na pozadí
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
