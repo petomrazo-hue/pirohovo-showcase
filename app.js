@@ -208,26 +208,34 @@ if (backTop) {
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ── Open/closed badge ──
+// ── Open/closed badge + delivery badge (jedna spoločná logika) ──
 (function () {
-  const badges = [document.getElementById('openBadge'), document.getElementById('heroOpenBadge')].filter(Boolean);
-  if (!badges.length) return;
   const now = new Date();
   const day = now.getDay();  // 0=Sun, 1=Mon
   const time = now.getHours() * 60 + now.getMinutes();
   const isMonday = day === 1;
   const inHours = time >= 11 * 60 && time < 20 * 60;
+  const isOpen = !isMonday && inHours;   // skutočne otvorené teraz
+
+  // Status badge (hero + kontakt)
+  const badges = [document.getElementById('openBadge'), document.getElementById('heroOpenBadge')].filter(Boolean);
   let cls, txt;
-  if (!isMonday && inHours) {
+  if (isOpen) {
     cls = 'open-badge is-open'; txt = 'Teraz otvorené · do 20:00';
   } else if (isMonday) {
     cls = 'open-badge is-closed'; txt = 'Dnes zatvorené (Pondelok)';
   } else if (time >= 20 * 60) {
     cls = 'open-badge is-closed'; txt = 'Zatvorené · otvárame zajtra 11:00';
   } else {
-    cls = 'open-badge is-open'; txt = 'Dnes otvárame o 11:00';
+    cls = 'open-badge is-closed'; txt = 'Zatvorené · otvárame dnes o 11:00';
   }
   badges.forEach(b => { b.className = cls; b.textContent = txt; });
+
+  // Rozvoz „~35 min" sa zobrazí LEN keď je naozaj otvorené.
+  // (Nesmie svietiť „Zatvorené" a zároveň „Rozvoz za 35 min".)
+  document.querySelectorAll('.hero__delivery-badge').forEach(d => {
+    d.style.display = isOpen ? '' : 'none';
+  });
 })();
 
 // ── Seasonal bar dismiss ──

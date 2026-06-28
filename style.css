@@ -1,5 +1,7 @@
 /* ═══════════════════════════════════════════
-   PIROHOVO — Premium Restaurant Design v35
+   PIROHOVO — Premium Restaurant Design v51
+   (production polish pass: noise removal, hierarchy,
+    icon consistency, a11y, dead-CSS cleanup)
    ═══════════════════════════════════════════ */
 
 /* ── 1. TOKENS ─────────────────────────────── */
@@ -69,6 +71,13 @@ body::after {
   text-decoration: none; transition: top .2s;
 }
 .skip-link:focus { top: 10px; }
+
+/* Visually hidden (screen-reader only) */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
 
 /* ── 5. BRAND WORDMARK (reálne logo z logo.jpg) ── */
 .brand-wordmark { display: block; width: auto; height: 30px; }
@@ -161,12 +170,6 @@ body::after {
 .btn--lg { padding: 16px 40px; font-size: .96rem; }
 .btn--sm { padding: 10px 22px; font-size: .82rem; }
 
-.btn--pulse { animation: btnPulse 3s ease-in-out infinite; }
-@keyframes btnPulse {
-  0%,100% { box-shadow: 0 4px 24px rgba(212,44,31,.32); }
-  50%      { box-shadow: 0 8px 40px rgba(212,44,31,.6), 0 0 0 6px rgba(212,44,31,.08); }
-}
-
 /* ── 8. BADGES ──────────────────────────────── */
 .badge {
   display: inline-flex; align-items: center; gap: 5px;
@@ -204,10 +207,14 @@ body::after {
   padding: 0;
   background: rgba(11,10,7,.96);
   backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
   border-bottom: 1px solid rgba(255,255,255,.06);
-  transition: border-color .3s;
+  transition: border-color .3s, box-shadow .3s;
 }
-.nav.scrolled { border-bottom-color: rgba(255,255,255,.1); }
+.nav.scrolled {
+  border-bottom-color: rgba(255,255,255,.1);
+  box-shadow: 0 8px 30px rgba(0,0,0,.35);
+}
 .nav__inner {
   display: flex; align-items: center; justify-content: space-between;
   height: 68px;
@@ -332,6 +339,7 @@ body::after {
 /* ── 12. HERO ───────────────────────────────── */
 .hero {
   min-height: 100vh;
+  min-height: 100svh; /* mobile Safari/Chrome: bez skákania s URL barom */
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
   padding: 100px 28px 80px;
@@ -738,7 +746,11 @@ body::after {
 .mitem:hover .mitem__img-inner { transform: scale(1.06); }
 .mitem__img--icon {
   display: flex; align-items: center; justify-content: center;
-  font-size: 3rem;
+}
+.mitem__img--icon svg {
+  width: 46px; height: 46px;
+  color: rgba(255,255,255,.92);
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,.3));
 }
 .mitem__img--cola   { background: linear-gradient(150deg, #6B0000, #B22222 55%, #6B0000); }
 .mitem__img--water  { background: linear-gradient(150deg, #0B2D4E, #1A5C8A 55%, #0B2D4E); }
@@ -764,7 +776,7 @@ body::after {
 .menu-order-label { font-size: .8rem; color: var(--muted); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .menu-order-btn {
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 8px 18px; border-radius: 20px;
+  padding: 8px 18px; border-radius: 100px;
   font-size: .82rem; font-weight: 700; text-decoration: none;
   transition: opacity .18s, transform .18s;
 }
@@ -1114,32 +1126,6 @@ body::after {
 .float-top.visible { opacity: 1; pointer-events: auto; }
 .float-top:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,.6); }
 
-/* ── Floating Wolt + Bolt (left side, desktop only, pill with label) ── */
-.float-wolt, .float-bolt {
-  position: fixed; left: 16px; z-index: 9991;
-  height: 48px; border-radius: 999px;
-  display: none;
-  align-items: center; gap: 9px;
-  padding: 6px 16px 6px 6px;
-  text-decoration: none; white-space: nowrap;
-  font-family: var(--font-body); font-size: .85rem; font-weight: 700;
-  transition: transform .2s, box-shadow .2s;
-  overflow: hidden;
-}
-.float-wolt {
-  bottom: 96px; background: #009DE0; color: #fff;
-  box-shadow: 0 4px 22px rgba(0,157,224,.45);
-}
-.float-bolt {
-  bottom: 36px; background: #34D186; color: #0b2b1b;
-  box-shadow: 0 4px 22px rgba(52,209,134,.4);
-}
-.float-wolt:hover { transform: translateX(4px) scale(1.03); box-shadow: 0 8px 30px rgba(0,157,224,.6); }
-.float-bolt:hover { transform: translateX(4px) scale(1.03); box-shadow: 0 8px 30px rgba(52,209,134,.55); }
-.float-wolt:focus-visible { outline: 2px solid #009DE0; outline-offset: 3px; }
-.float-bolt:focus-visible { outline: 2px solid #34D186; outline-offset: 3px; }
-.float-wolt img, .float-bolt img { border-radius: 50%; flex-shrink: 0; }
-
 /* ── Sticky order strip (appears after hero scroll) ── */
 .order-strip {
   position: fixed; top: 60px; left: 0; right: 0; z-index: 400;
@@ -1176,20 +1162,6 @@ body::after {
   padding: 3px 10px; border-radius: 100px;
 }
 .hero__closing { color: var(--gold); font-size: .78rem; font-weight: 600; display: none; }
-
-/* ── Menu card order link ── */
-.mcard__order {
-  display: inline-flex; align-items: center; gap: 5px;
-  margin-top: 10px; font-size: .78rem; font-weight: 700;
-  color: #009DE0; text-decoration: none; transition: opacity .2s;
-}
-.mcard__order:hover { opacity: .7; }
-.mcard__urgency {
-  display: inline-block; font-size: .68rem; font-weight: 700;
-  background: rgba(212,44,31,.15); color: var(--red-l);
-  border: 1px solid rgba(212,44,31,.25);
-  padding: 2px 8px; border-radius: 100px; margin-top: 6px;
-}
 
 /* ── FAQ WhatsApp CTA ── */
 .faq-cta {
@@ -1508,7 +1480,6 @@ body::after {
   .cursor-pirog    { display: none; }
   .open-badge::before { animation: none; }
   .badge--new      { animation: none; }
-  .btn--pulse      { animation: none; }
   .reveal          { opacity: 1; transform: none; filter: none; transition: none; }
   .hero__arrow span{ animation: none; opacity: .5; }
   .hero__logo-img  { animation: none; }
@@ -1608,44 +1579,9 @@ body::after {
   .mob-bar { display: none; }
   .float-wa    { bottom: 24px; }
   .float-top   { bottom: 24px; right: 84px; }
-  .float-wolt,
-  .float-bolt  { display: flex; }
 }
 
-/* ── 33. ORDER PAGE ─────────────────────────── */
-.order-page { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 20px 120px; }
-.order-back { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; font-size: .84rem; margin-bottom: 32px; transition: color .2s; align-self: flex-start; max-width: 640px; width: 100%; }
-.order-back:hover { color: var(--text); }
-.order-hero { text-align: center; margin-bottom: 48px; }
-.order-hero h1 { font-family: var(--font-brand); font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: .08em; line-height: 1.0; margin-bottom: 12px; }
-.order-hero p  { color: var(--muted); font-size: .95rem; max-width: 440px; margin: 0 auto; }
-.order-channels { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; width: 100%; max-width: 680px; margin-bottom: 32px; }
-.order-ch {
-  display: flex; flex-direction: column; align-items: center; gap: 14px;
-  padding: 36px 24px; border-radius: var(--r-lg);
-  text-decoration: none; transition: transform .22s, box-shadow .22s;
-  border: 2px solid transparent;
-}
-.order-ch:hover { transform: translateY(-5px); box-shadow: 0 20px 56px rgba(0,0,0,.4); }
-.order-ch:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
-.order-ch--wolt { background: #009DE0; color: #fff; }
-.order-ch--bolt { background: #34D186; color: #111; }
-.order-ch--phone{ background: var(--surface); color: var(--text); border-color: var(--border); grid-column: span 2; }
-.order-ch--phone:hover { border-color: var(--border-h); }
-.order-ch--wa   { background: #25d366; color: #fff; }
-.order-ch__logo { width: 56px; height: 56px; }
-.order-ch__name { font-family: var(--font-brand); font-size: 2rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; line-height: 1; }
-.order-ch__desc { font-size: .82rem; opacity: .8; text-align: center; line-height: 1.5; }
-.order-ch__cta  { background: rgba(0,0,0,.15); padding: 9px 22px; border-radius: 100px; font-weight: 700; font-size: .86rem; margin-top: 4px; }
-.order-ch--bolt .order-ch__cta { background: rgba(0,0,0,.1); }
-.order-ch--phone .order-ch__cta { background: var(--red); color: #fff; font-size: 1.1rem; padding: 12px 28px; }
-.order-note { text-align: center; color: var(--muted); font-size: .82rem; max-width: 480px; line-height: 1.7; }
-.order-note a { color: var(--red); text-decoration: none; }
-.order-note a:hover { text-decoration: underline; }
-@media (max-width: 520px) {
-  .order-channels { grid-template-columns: 1fr; }
-  .order-ch--phone { grid-column: span 1; }
-}
+/* (Order page styles live inline in order.html — self-contained.) */
 
 /* ── 34. PAGE HEADER (menu/alergeny) ─────────── */
 .page-header {
