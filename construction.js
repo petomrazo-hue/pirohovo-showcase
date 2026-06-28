@@ -104,20 +104,19 @@
     // ambientné plávajúce pirohy na pozadí
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       var layer = o.querySelector('.uc-pirohy');
-      var N = window.matchMedia('(max-width: 600px)').matches ? 8 : 14;
+      var N = window.matchMedia('(max-width: 600px)').matches ? 12 : 22;
       for (var i = 0; i < N; i++) {
         var s = document.createElement('span');
         s.className = 'uc-piroh';
         s.textContent = '🥟';
-        s.style.left = (Math.random() * 92 + 2) + '%';
-        s.style.top = (Math.random() * 88 + 4) + '%';
-        s.style.fontSize = (1 + Math.random() * 1.9) + 'rem';
-        s.style.opacity = (0.07 + Math.random() * 0.13).toFixed(2);
-        s.style.setProperty('--dur', (7 + Math.random() * 7).toFixed(1) + 's');
-        s.style.setProperty('--delay', (-Math.random() * 8).toFixed(1) + 's');
-        s.style.setProperty('--ty', (-(18 + Math.random() * 34)).toFixed(0) + 'px');
-        s.style.setProperty('--r0', (Math.random() * 24 - 12).toFixed(0) + 'deg');
-        s.style.setProperty('--r1', (Math.random() * 24 - 12).toFixed(0) + 'deg');
+        s.style.left = (Math.random() * 95 + 1) + '%';
+        s.style.fontSize = (0.9 + Math.random() * 1.8) + 'rem';
+        s.style.opacity = (0.10 + Math.random() * 0.18).toFixed(2);
+        var dur = (14 + Math.random() * 16).toFixed(1);
+        s.style.setProperty('--dur', dur + 's');
+        s.style.setProperty('--delay', (-Math.random() * parseFloat(dur)).toFixed(1) + 's');
+        s.style.setProperty('--r0', (Math.random() * 40 - 20).toFixed(0) + 'deg');
+        s.style.setProperty('--r1', (Math.random() * 360 - 180).toFixed(0) + 'deg');
         layer.appendChild(s);
       }
     }
