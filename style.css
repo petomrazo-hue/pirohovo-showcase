@@ -301,6 +301,16 @@ body::after {
 }
 .nav__order:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 
+/* Language switcher */
+.nav__lang { display: flex; gap: 2px; align-items: center; }
+.lang-btn {
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+  color: var(--muted); text-decoration: none;
+  padding: 5px 7px; border-radius: 5px;
+  transition: color .2s, background .2s;
+}
+.lang-btn:hover, .lang-btn.is-active { color: var(--text); background: rgba(255,255,255,.08); }
+
 /* Burger */
 .nav__burger {
   display: none; flex-direction: column; gap: 5px;
@@ -380,7 +390,7 @@ body::after {
 }
 .nav__inner { position: relative; z-index: 1; }
 .nav__piroh {
-  position: absolute; left: 0; line-height: 1; user-select: none;
+  position: absolute; left: 0; line-height: 1; -webkit-user-select: none; user-select: none;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.5));
   animation: navPirohDrift var(--dur, 16s) linear var(--delay, 0s) infinite;
   will-change: transform, opacity;
@@ -817,7 +827,7 @@ body::after {
 }
 .alg-legend summary {
   cursor: pointer; font-weight: 700; color: var(--dim); font-size: .88rem;
-  list-style: none; user-select: none; padding: 2px 0;
+  list-style: none; -webkit-user-select: none; user-select: none; padding: 2px 0;
 }
 .alg-legend summary::-webkit-details-marker { display: none; }
 .alg-legend ul {
@@ -955,17 +965,19 @@ body::after {
 .faq-item:hover { border-color: var(--border-h); }
 .faq-item[open] { border-color: rgba(212,44,31,.25); }
 .faq-q {
-  padding: 18px 22px; cursor: pointer;
+  padding: 18px 52px 18px 22px; cursor: pointer;
   font-size: .96rem; font-weight: 600; color: var(--text);
-  list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  list-style: none; display: block; position: relative;
+  -webkit-user-select: none;
   user-select: none;
 }
 .faq-q::-webkit-details-marker { display: none; }
 .faq-q::after {
   content: '+'; color: var(--red); font-size: 1.4rem; font-weight: 300;
-  flex-shrink: 0; transition: transform .25s;
+  position: absolute; right: 22px; top: 50%;
+  transform: translateY(-50%); transition: transform .25s;
 }
-.faq-item[open] .faq-q::after { transform: rotate(45deg); }
+.faq-item[open] .faq-q::after { transform: translateY(-50%) rotate(45deg); }
 .faq-a {
   padding: 0 22px 18px;
   font-size: .9rem; color: var(--muted); line-height: 1.75;
@@ -1108,7 +1120,7 @@ body::after {
 
 /* ── 24. FLOATING ELEMENTS ──────────────────── */
 .float-wa {
-  position: fixed; bottom: 88px; right: 20px; z-index: 9991;
+  position: fixed; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); right: 20px; z-index: 9991;
   width: 52px; height: 52px; border-radius: 50%;
   background: #25d366; color: #fff;
   display: flex; align-items: center; justify-content: center;
@@ -1138,12 +1150,12 @@ body::after {
 .float-wa:focus .float-wa__tooltip { opacity: 1; transform: translateX(0); }
 
 .float-top {
-  position: fixed; bottom: 88px; right: 82px; z-index: 9990;
+  position: fixed; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); right: 82px; z-index: 9990;
   width: 44px; height: 44px; border-radius: 50%;
   background: rgba(24,23,16,.95); color: var(--text);
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; backdrop-filter: blur(12px);
+  cursor: pointer; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   box-shadow: 0 4px 20px rgba(0,0,0,.5);
   transition: transform .2s, opacity .3s, box-shadow .2s;
   opacity: 0; pointer-events: none;
@@ -1244,7 +1256,7 @@ body::after {
 
 .mzc-box {
   width: 100%; max-width: 520px;
-  max-height: calc(100vh - 44px);
+  max-height: calc(100svh - 44px);
   overflow-y: auto;
   background: var(--mzc-bg); color: var(--mzc-text);
   border: 1px solid var(--mzc-border);
@@ -1358,7 +1370,7 @@ body::after {
 /* ── Easter egg: header plný pirohov (klik na logo) ── */
 .egg-pirog {
   position: fixed; top: -8vh; z-index: 99998;
-  pointer-events: none; user-select: none; line-height: 1;
+  pointer-events: none; -webkit-user-select: none; user-select: none; line-height: 1;
   filter: drop-shadow(0 6px 10px rgba(0,0,0,.5));
   animation-name: eggPirogRain;
   animation-timing-function: cubic-bezier(.45,.05,.55,.95);
@@ -1382,7 +1394,7 @@ body::after {
 /* ── 27. CURSOR EFFECT ──────────────────────── */
 .cursor-pirog {
   position: fixed; pointer-events: none; z-index: 99999;
-  width: 32px; height: 22px; display: block; user-select: none;
+  width: 32px; height: 22px; display: block; -webkit-user-select: none; user-select: none;
   animation: pirogFloat 1s ease-out forwards;
   will-change: transform, opacity;
 }
@@ -1632,8 +1644,8 @@ body::after {
   .location-section{ padding: 72px 0; }
   .faq-section  { padding: 72px 0; }
   .about-section{ padding: 72px 0; }
-  .float-wa     { bottom: 80px; right: 16px; }
-  .float-top    { bottom: 80px; right: 76px; }
+  .float-wa     { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); right: 16px; }
+  .float-top    { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); right: 76px; }
   .mob-bar .mob-btn--order { grid-column: span 1; }
 }
 

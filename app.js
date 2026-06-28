@@ -1,4 +1,40 @@
-/* Pirohovo app.js v38 */
+/* Pirohovo app.js v39 */
+
+// ── i18n strings (SK/EN/DE) ──
+const _LANG = document.documentElement.lang || 'sk';
+const _T = {
+  sk: {
+    open: 'Teraz otvorené · do 20:00',
+    closedMon: 'Dnes zatvorené (Pondelok)',
+    closedAfter: 'Zatvorené · otvárame zajtra 11:00',
+    closedBefore: 'Zatvorené · otvárame dnes o 11:00',
+    closingH: (h, m) => `· Zatvára za ${h}h ${m}min`,
+    closingM: (m) => `· Zatvára za ${m} min ⚡`,
+  },
+  en: {
+    open: 'Open now · until 20:00',
+    closedMon: 'Closed today (Monday)',
+    closedAfter: 'Closed · opens tomorrow at 11:00',
+    closedBefore: 'Closed · opens today at 11:00',
+    closingH: (h, m) => `· Closing in ${h}h ${m}min`,
+    closingM: (m) => `· Closing in ${m} min ⚡`,
+  },
+  de: {
+    open: 'Jetzt geöffnet · bis 20:00',
+    closedMon: 'Heute geschlossen (Montag)',
+    closedAfter: 'Geschlossen · öffnet morgen um 11:00',
+    closedBefore: 'Geschlossen · öffnet heute um 11:00',
+    closingH: (h, m) => `· Schließt in ${h}h ${m}min`,
+    closingM: (m) => `· Schließt in ${m} min ⚡`,
+  },
+}[_LANG] || {
+  open: 'Teraz otvorené · do 20:00',
+  closedMon: 'Dnes zatvorené (Pondelok)',
+  closedAfter: 'Zatvorené · otvárame zajtra 11:00',
+  closedBefore: 'Zatvorené · otvárame dnes o 11:00',
+  closingH: (h, m) => `· Zatvára za ${h}h ${m}min`,
+  closingM: (m) => `· Zatvára za ${m} min ⚡`,
+};
 
 // ── Closing countdown ──
 (function () {
@@ -10,7 +46,7 @@
     if (day === 1 || h < 11 || h >= 20) { el.style.display = 'none'; return; }
     const mins = (19 - h) * 60 + (60 - m);
     const hh = Math.floor(mins / 60), mm = mins % 60;
-    el.textContent = hh > 0 ? `· Zatvára za ${hh}h ${mm}min` : `· Zatvára za ${mm} min ⚡`;
+    el.textContent = hh > 0 ? _T.closingH(hh, mm) : _T.closingM(mm);
     el.style.display = 'inline';
   }
   update();
@@ -221,13 +257,13 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   const badges = [document.getElementById('openBadge'), document.getElementById('heroOpenBadge')].filter(Boolean);
   let cls, txt;
   if (isOpen) {
-    cls = 'open-badge is-open'; txt = 'Teraz otvorené · do 20:00';
+    cls = 'open-badge is-open'; txt = _T.open;
   } else if (isMonday) {
-    cls = 'open-badge is-closed'; txt = 'Dnes zatvorené (Pondelok)';
+    cls = 'open-badge is-closed'; txt = _T.closedMon;
   } else if (time >= 20 * 60) {
-    cls = 'open-badge is-closed'; txt = 'Zatvorené · otvárame zajtra 11:00';
+    cls = 'open-badge is-closed'; txt = _T.closedAfter;
   } else {
-    cls = 'open-badge is-closed'; txt = 'Zatvorené · otvárame dnes o 11:00';
+    cls = 'open-badge is-closed'; txt = _T.closedBefore;
   }
   badges.forEach(b => { b.className = cls; b.textContent = txt; });
 
