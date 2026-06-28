@@ -373,23 +373,26 @@ body::after {
 }
 @keyframes glowPulse { from { opacity: .5; } to { opacity: 1; } }
 
-/* ambientné plávajúce pirohy v hero (za obsahom) */
-.hero__pirohy {
-  position: absolute; inset: 0; z-index: 2;
+/* plávajúce pirohy v hlavičke (nav lišta) */
+.nav__pirohy {
+  position: absolute; inset: 0; z-index: 0;
   pointer-events: none; overflow: hidden;
 }
-.hero__piroh {
-  position: absolute; line-height: 1; user-select: none;
-  filter: drop-shadow(0 6px 12px rgba(0,0,0,.55));
-  animation: heroPirohFloat var(--dur, 9s) ease-in-out var(--delay, 0s) infinite alternate;
-  will-change: transform;
+.nav__inner { position: relative; z-index: 1; }
+.nav__piroh {
+  position: absolute; left: 0; line-height: 1; user-select: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.5));
+  animation: navPirohDrift var(--dur, 16s) linear var(--delay, 0s) infinite;
+  will-change: transform, opacity;
 }
-@keyframes heroPirohFloat {
-  from { transform: translate(0, 0) rotate(var(--r0, -6deg)); }
-  to   { transform: translate(var(--tx, 12px), var(--ty, -26px)) rotate(var(--r1, 8deg)); }
+@keyframes navPirohDrift {
+  0%   { transform: translateX(-50px) rotate(0deg); opacity: 0; }
+  10%  { opacity: var(--op, .5); }
+  90%  { opacity: var(--op, .5); }
+  100% { transform: translateX(110vw) rotate(var(--rot, 200deg)); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero__piroh { animation: none; }
+  .nav__piroh { animation: none; opacity: var(--op, .5); }
 }
 
 .hero__particles { position: absolute; inset: 0; pointer-events: none; z-index: 2; }

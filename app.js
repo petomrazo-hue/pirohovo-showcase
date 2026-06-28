@@ -287,25 +287,21 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
 })();
 
-// ── Ambientné plávajúce pirohy v hero (stále, aj na mobile) ──
+// ── Plávajúce pirohy v hlavičke (nav lišta) — driftujú naprieč ──
 (function () {
-  const layer = document.getElementById('heroPirohy');
+  const layer = document.getElementById('navPirohy');
   if (!layer) return;
-  const N = window.matchMedia('(max-width: 768px)').matches ? 11 : 17;
+  const N = window.matchMedia('(max-width: 768px)').matches ? 5 : 9;
   for (let i = 0; i < N; i++) {
     const s = document.createElement('span');
-    s.className = 'hero__piroh';
+    s.className = 'nav__piroh';
     s.textContent = '🥟';
-    s.style.left = (Math.random() * 94 + 2) + '%';
-    s.style.top = (Math.random() * 86 + 4) + '%';
-    s.style.fontSize = (1.1 + Math.random() * 1.8) + 'rem';
-    s.style.opacity = (0.14 + Math.random() * 0.28).toFixed(2);
-    s.style.setProperty('--dur', (7 + Math.random() * 6).toFixed(1) + 's');
-    s.style.setProperty('--delay', (-Math.random() * 7).toFixed(1) + 's');
-    s.style.setProperty('--tx', (Math.random() * 40 - 20).toFixed(0) + 'px');
-    s.style.setProperty('--ty', (-(16 + Math.random() * 32)).toFixed(0) + 'px');
-    s.style.setProperty('--r0', (Math.random() * 24 - 12).toFixed(0) + 'deg');
-    s.style.setProperty('--r1', (Math.random() * 24 - 12).toFixed(0) + 'deg');
+    s.style.top = (8 + Math.random() * 58) + '%';
+    s.style.fontSize = (0.7 + Math.random() * 0.7) + 'rem';
+    s.style.setProperty('--op', (0.22 + Math.random() * 0.3).toFixed(2));
+    s.style.setProperty('--dur', (12 + Math.random() * 10).toFixed(1) + 's');
+    s.style.setProperty('--delay', (-Math.random() * 22).toFixed(1) + 's');
+    s.style.setProperty('--rot', (Math.random() * 320 - 160).toFixed(0) + 'deg');
     layer.appendChild(s);
   }
 })();
