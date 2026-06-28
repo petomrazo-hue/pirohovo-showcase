@@ -28,9 +28,42 @@
   </style>
 </head>
 <body>
-<nav class="nav scrolled" id="nav">
-  <div class="nav__inner container">
-    <a href="index.html" class="nav__logo"><img class="brand-wordmark" src="images/wordmark.png" alt="Pirohovo" width="753" height="267"></a>
+<nav class="nav" id="nav" role="navigation" aria-label="Hlavná navigácia">
+  <div class="nav__pirohy" id="navPirohy" aria-hidden="true"></div>
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo" aria-label="Pirohovo – domovská stránka">
+      <img src="images/logo.jpg" alt="Pirohovo logo" class="nav__logo-img" width="44" height="44" loading="eager">
+      <span class="nav__logo-name"><img class="brand-wordmark" src="images/wordmark.png" alt="Pirohovo" width="753" height="267"></span>
+    </a>
+    <ul class="nav__links" id="navLinks" role="list">
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="index.html#stanok">Stánok</a></li>
+      <li><a href="index.html#kde-nas">Kde nás nájdete</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li class="nav__m-cats" aria-label="Kategórie menu">
+        <span class="nav__m-label">Z menu</span>
+        <a href="menu.html#slane">Slané pirohy</a>
+        <a href="menu.html#sladke">Sladké pirohy</a>
+        <a href="menu.html#sulance">Šúľance</a>
+        <a href="menu.html#napoje">Nápoje</a>
+      </li>
+      <li><a href="order.html" class="nav__order nav__order-mobile">Objednať teraz</a></li>
+    </ul>
+    <div class="nav__actions">
+      <div class="nav__lang" aria-label="Jazyk / Language">
+        <a href="/" class="lang-btn is-active" lang="sk" hreflang="sk">SK</a>
+        <a href="/en/" class="lang-btn" lang="en" hreflang="en">EN</a>
+        <a href="/de/" class="lang-btn" lang="de" hreflang="de">DE</a>
+      </div>
+      <a href="tel:+421915671603" class="nav__phone" aria-label="Zavolať: 0915 671 603">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.37 19.79 19.79 0 0 1 1.61.73 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>0915 671 603</span>
+      </a>
+      <a href="order.html" class="nav__order">Objednať teraz</a>
+    </div>
+    <button class="nav__burger" id="burger" aria-label="Otvoriť navigačné menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -92,17 +125,55 @@
   <p>Predávajúci si vyhradzuje právo tieto podmienky meniť. Zmeny nadobúdajú účinnosť ich zverejnením na stránke pirohovo.eu.</p>
 </div>
 
-<footer class="footer">
-  <div class="container footer__inner" style="flex-direction:row; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-    <span class="footer__logo"><img class="brand-wordmark" src="images/wordmark.png" alt="Pirohovo" width="753" height="267"></span>
-    <div class="footer__legal">
-      <a href="vop.html">Obchodné podmienky</a>
-      <span class="footer__sep">·</span>
-      <a href="gdpr.html">Ochrana osobných údajov</a>
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="Pirohovo — domovská stránka">
+          <img class="brand-wordmark" src="images/wordmark.png" alt="Pirohovo" width="753" height="267">
+        </a>
+        <span class="footer__tagline">Prešovská 349/38B, Bratislava</span>
+      </div>
+      <nav class="footer__nav" aria-label="Navigácia v päte">
+        <a href="menu.html">Menu</a>
+        <a href="order.html">Objednať</a>
+        <a href="alergeny.html">Alergény</a>
+        <a href="index.html#stanok">Stánok</a>
+        <a href="index.html#kde-nas">Kontakt</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="https://www.instagram.com/pirohovo" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/pirohovo" target="_blank" rel="noopener noreferrer">Facebook</a>
+      </nav>
+      <div class="footer__right">
+        <div class="footer__socials">
+          <a href="https://www.instagram.com/pirohovo" target="_blank" rel="noopener noreferrer" aria-label="Instagram @pirohovo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/pirohovo" target="_blank" rel="noopener noreferrer" aria-label="Facebook Pirohovo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+        <a href="order.html" class="btn btn--primary btn--sm">Objednať teraz</a>
+      </div>
     </div>
-    <p class="footer__copy">© <span id="year2"></span> Pirohovo s. r. o. · IČO: 57 646 333</p>
+    <div class="footer__bottom">
+      <div class="footer__legal">
+        <a href="vop.html">Obchodné podmienky</a>
+        <span class="footer__sep" aria-hidden="true">·</span>
+        <a href="gdpr.html">Ochrana osobných údajov</a>
+        <span class="footer__sep" aria-hidden="true">·</span>
+        <a href="alergeny.html">Alergény</a>
+        <span class="footer__sep" aria-hidden="true">·</span>
+        <a href="https://www.soi.sk" target="_blank" rel="noopener noreferrer">SOI</a>
+      </div>
+      <div class="footer__company">
+        <p>Pirohovo s. r. o. · IČO: 57 646 333 · Rybničná 10191/61B, 831 06 Bratislava</p>
+        <p>Prevádzka: Prešovská 349/38B, 821 02 Bratislava</p>
+      </div>
+      <p class="footer__copy">© <span id="year"></span> Pirohovo s. r. o. · <span class="footer__credit">Web: <a href="https://mrazosoft.sk" target="_blank" rel="noopener noreferrer">MRAZOSOFT</a></span></p>
+    </div>
   </div>
 </footer>
-<script>document.getElementById('year2').textContent = new Date().getFullYear();</script>
+<script src="app.js?v=40"></script>
 </body>
 </html>
