@@ -1523,8 +1523,12 @@ body::after {
      Fix: nav.menu-open sa roztiahne na celý viewport, nav__links je absolute. */
   .nav.menu-open {
     bottom: 0;
-    backdrop-filter: none; /* odstrání containing-block efekt pri otvorenom menu */
+    backdrop-filter: none;
     background: transparent;
+  }
+  /* nav__inner je position:relative → containing block pre nav__links; zrušíme to keď je menu otvorené */
+  .nav.menu-open .nav__inner {
+    position: static;
   }
   .nav__links {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
