@@ -8,9 +8,13 @@ html.uc-on, html.uc-on body { overflow: hidden !important; }
   inset: 0;
   z-index: 99999;
   display: flex;
+  /* flex-start + margin:auto na .uc-stage = centruje keď je miesto, scrolluje keď nie */
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: clamp(20px, 5vw, 48px);
+  justify-content: flex-start;
+  padding: clamp(16px, 4vw, 48px);
+  padding-top: max(clamp(16px, 4vw, 48px), env(safe-area-inset-top, 0px));
+  padding-bottom: max(clamp(16px, 4vw, 48px), env(safe-area-inset-bottom, 0px));
   background:
     radial-gradient(110% 80% at 50% -10%, rgba(212,44,31,.20), transparent 60%),
     radial-gradient(90% 70% at 88% 112%, rgba(196,149,32,.14), transparent 60%),
@@ -49,6 +53,7 @@ html.uc-on, html.uc-on body { overflow: hidden !important; }
   position: relative; z-index: 2;
   width: 100%; max-width: 560px;
   text-align: center;
+  margin: auto; /* centruje vertikálne keď je dostatok priestoru */
 }
 /* postupný nábeh prvkov */
 .uc-stage > * { animation: uc-in .65s cubic-bezier(.2,.7,.2,1) both; }
@@ -167,6 +172,21 @@ html.uc-on, html.uc-on body { overflow: hidden !important; }
 @media (max-width: 460px) {
   .uc-actions { flex-direction: column; }
   .uc-btn { width: 100%; }
+}
+
+/* ── malá výška (mobil s URL lištou) ── */
+@media (max-height: 680px) {
+  .uc-logo { width: 68px; height: 68px; }
+  .uc-wordmark { width: clamp(140px, 50vw, 200px); }
+  .uc-brand { gap: 10px; margin-bottom: 14px; }
+  .uc-piroh-hero { font-size: clamp(2.2rem, 9vw, 3.6rem); margin-bottom: 8px; }
+  .uc-title { font-size: clamp(2.2rem, 9vw, 3.8rem); }
+  .uc-clock { font-size: clamp(1.4rem, 5vw, 2rem); margin-bottom: 14px; }
+  .uc-sub { margin-bottom: 16px; font-size: .92rem; }
+  .uc-actions { margin-bottom: 14px; }
+  .uc-rating { margin-bottom: 14px; }
+  .uc-social { gap: 10px; }
+  .uc-soc { width: 38px; height: 38px; }
 }
 
 /* ── respektuj reduced-motion ── */
