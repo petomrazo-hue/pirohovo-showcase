@@ -156,20 +156,12 @@ if (catBtns.length && catSections.length) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if ('ontouchstart' in window && navigator.maxTouchPoints > 1) return;
 
-  const PIROG_SVG = `<svg viewBox="0 0 64 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 38 C4 38 2 36 4 30 C8 14 18 4 32 4 C46 4 56 14 60 30 C62 36 60 38 60 38 Z"
-          fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.92)" stroke-width="2.2" stroke-linejoin="round"/>
-    <path d="M6 33 C8 27 7 24 10 22 C13 20 15 24 18 22 C21 20 22 17 25 15 C28 13 29 17 32 16 C35 15 36 19 39 17 C42 15 43 19 46 18 C49 17 50 21 53 20 C56 19 57 24 58 28"
-          fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M16 18 Q24 9 32 8 Q40 7 48 12" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-linecap="round"/>
-  </svg>`;
-
   let last = 0, count = 0;
 
   function emitPirog(x, y, burst) {
     const el = document.createElement('span');
     el.className = 'cursor-pirog';
-    el.innerHTML = PIROG_SVG;
+    el.textContent = '🥟';
     const spread = burst ? 80 : 50;
     const dx = (Math.random() - 0.5) * spread;
     const dy = -(burst ? 60 : 32) - Math.random() * 40;
@@ -336,6 +328,12 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   logo.addEventListener('click', (e) => {
     if (isHome) { e.preventDefault(); burst(); }
   });
+
+  const heroLogo = document.querySelector('.hero__logo-img');
+  if (heroLogo) {
+    heroLogo.style.cursor = 'pointer';
+    heroLogo.addEventListener('click', () => burst());
+  }
 })();
 
 // ── Plávajúce pirohy v hlavičke (nav lišta) ──
@@ -347,7 +345,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   for (let i = 0; i < N; i++) {
     const s = document.createElement('span');
     s.className = 'nav__piroh';
-    s.innerHTML = PIROG_SVG_ANIM;
+    s.textContent = '🥟';
     s.style.top = (8 + Math.random() * 58) + '%';
     s.style.fontSize = (0.7 + Math.random() * 0.7) + 'rem';
     s.style.setProperty('--op', (0.22 + Math.random() * 0.3).toFixed(2));

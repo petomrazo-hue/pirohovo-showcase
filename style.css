@@ -246,7 +246,7 @@ body::after {
   transition: box-shadow .25s, transform .25s;
 }
 .nav__logo:hover .nav__logo-img {
-  box-shadow: 0 0 24px rgba(212,44,31,.35);
+  box-shadow: 0 0 20px rgba(0,0,0,.6);
   transform: scale(1.06);
 }
 .nav__logo-name {
@@ -439,13 +439,13 @@ body::after {
   height: clamp(80px, 12vw, 120px);
   border-radius: 50%; object-fit: cover;
   border: 2.5px solid rgba(255,255,255,.22);
-  box-shadow: 0 0 0 8px rgba(212,44,31,.06), 0 12px 60px rgba(0,0,0,.6);
+  box-shadow: 0 12px 60px rgba(0,0,0,.6);
   margin: 0 auto;
   animation: logoFloat 6s ease-in-out infinite;
 }
 @keyframes logoFloat {
-  0%,100% { transform: translateY(0); box-shadow: 0 0 0 8px rgba(212,44,31,.06), 0 12px 60px rgba(0,0,0,.6); }
-  50%      { transform: translateY(-7px); box-shadow: 0 0 0 14px rgba(212,44,31,.1), 0 22px 80px rgba(0,0,0,.6); }
+  0%,100% { transform: translateY(0); box-shadow: 0 12px 60px rgba(0,0,0,.6); }
+  50%      { transform: translateY(-7px); box-shadow: 0 22px 80px rgba(0,0,0,.6); }
 }
 
 .hero__title {
@@ -1409,11 +1409,10 @@ body::after {
 /* ── 27. CURSOR EFFECT ──────────────────────── */
 .cursor-pirog {
   position: fixed; pointer-events: none; z-index: 99999;
-  width: 32px; height: 22px; display: block; -webkit-user-select: none; user-select: none;
+  display: block; line-height: 1; -webkit-user-select: none; user-select: none;
   animation: pirogFloat 1s ease-out forwards;
   will-change: transform, opacity;
 }
-.cursor-pirog svg { width: 100%; height: 100%; display: block; }
 @keyframes pirogFloat {
   0%   { opacity: .9; transform: translate(0,0) rotate(0deg) scale(1); }
   100% { opacity: 0;  transform: translate(var(--dx,0px), var(--dy,-55px)) rotate(var(--rot,30deg)) scale(0.45); }
@@ -1599,7 +1598,16 @@ body::after {
     font-size: 1.1rem; color: var(--dim);
     padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.05);
   }
-  .nav__m-cats a::before { content: "🥟"; font-size: .95em; }
+  .nav__m-cats a::before {
+    content: "";
+    display: block;
+    width: 1.5em; height: 1.07em;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 46' fill='none'><path d='M4 38 C4 38 2 36 4 30 C8 14 18 4 32 4 C46 4 56 14 60 30 C62 36 60 38 60 38 Z' fill='white' fill-opacity='.15' stroke='white' stroke-opacity='.92' stroke-width='2.2' stroke-linejoin='round'/><path d='M6 33 C8 27 7 24 10 22 C13 20 15 24 18 22 C21 20 22 17 25 15 C28 13 29 17 32 16 C35 15 36 19 39 17 C42 15 43 19 46 18 C49 17 50 21 53 20 C56 19 57 24 58 28' stroke='white' stroke-opacity='.55' stroke-width='1.5' stroke-linecap='round'/><path d='M16 18 Q24 9 32 8 Q40 7 48 12' stroke='white' stroke-opacity='.22' stroke-width='2' stroke-linecap='round'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
   .nav__m-cats a:last-child { border-bottom: none; }
   .nav__m-cats a:active { color: var(--text); }
 
