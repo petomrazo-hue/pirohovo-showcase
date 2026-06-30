@@ -294,6 +294,8 @@ body::after {
 .nav__phone:hover { color: var(--text); }
 .nav__phone svg { flex-shrink: 0; }
 
+.nav__order-mobile { display: none; }
+
 .nav__order {
   background: var(--red); color: #fff;
   padding: 9px 22px; border-radius: 100px;

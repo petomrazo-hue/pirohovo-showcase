@@ -312,7 +312,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
     for (let i = 0; i < 52; i++) {
       const s = document.createElement('span');
       s.className = 'egg-pirog';
-      s.innerHTML = PIROG_SVG_ANIM;
+      s.textContent = '🥟';
       s.style.left = (Math.random() * 100) + 'vw';
       s.style.fontSize = (0.9 + Math.random() * 2.1) + 'rem';
       s.style.setProperty('--dx', (Math.random() * 90 - 45) + 'px');
@@ -326,7 +326,11 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   }
 
   logo.addEventListener('click', (e) => {
-    if (isHome) { e.preventDefault(); burst(); }
+    if (isHome) {
+      e.preventDefault();
+      burst();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   });
 
   const heroLogo = document.querySelector('.hero__logo-img');
