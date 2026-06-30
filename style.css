@@ -1553,6 +1553,7 @@ body::after {
     bottom: 0;
     backdrop-filter: none;
     background: transparent;
+    z-index: 600;
   }
   /* nav__inner je position:relative → containing block pre nav__links; zrušíme to keď je menu otvorené */
   .nav.menu-open .nav__inner {
