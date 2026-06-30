@@ -10,7 +10,7 @@
 (function () {
   "use strict";
 
-  var UC_ON = true;                 // ← ZAPNI / VYPNI overlay
+  var UC_ON = false;                // ← ZAPNI / VYPNI overlay
   var PREVIEW_KEY = "pirohy2026";   // tajný token pre klientsky náhľad
 
   if (!UC_ON) return;
